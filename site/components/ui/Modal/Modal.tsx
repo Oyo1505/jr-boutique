@@ -1,54 +1,59 @@
-import { FC, useRef, useEffect, useCallback, ReactNode } from 'react'
-import s from './Modal.module.css'
-import FocusTrap from '@lib/focus-trap'
-import { Cross } from '@components/icons'
-import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
+import {
+  FC, useRef, useEffect, useCallback, ReactNode,
+} from 'react';
+import FocusTrap from '@lib/focus-trap';
+import { Cross } from '@components/icons';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import s from './Modal.module.scss';
 
 interface ModalProps {
+  // eslint-disable-next-line  react/no-unused-prop-types
   className?: string
   children?: ReactNode
   onClose: () => void
 }
 
 const Modal: FC<ModalProps> = ({ children, onClose }) => {
-  const ref = useRef() as React.MutableRefObject<HTMLDivElement>
+  const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleKey = useCallback(
+    // eslint-disable-next-line consistent-return
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        return onClose()
+        return onClose();
       }
     },
-    [onClose]
-  )
+    [onClose],
+  );
 
   useEffect(() => {
-    const modal = ref.current
+    const modal = ref.current;
 
     if (modal) {
-      disableBodyScroll(modal, { reserveScrollBarGap: true })
-      window.addEventListener('keydown', handleKey)
+      disableBodyScroll(modal, { reserveScrollBarGap: true });
+      window.addEventListener('keydown', handleKey);
     }
     return () => {
-      clearAllBodyScrollLocks()
-      window.removeEventListener('keydown', handleKey)
-    }
-  }, [handleKey])
+      clearAllBodyScrollLocks();
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [handleKey]);
 
   return (
     <div className={s.root}>
-      <div className={s.modal} role="dialog" ref={ref}>
+      <div className={s.modal} role='dialog' ref={ref}>
         <button
+          type='button'
           onClick={() => onClose()}
-          aria-label="Close panel"
+          aria-label='Close panel'
           className={s.close}
         >
-          <Cross className="h-6 w-6" />
+          <Cross className='h-6 w-6' />
         </button>
         <FocusTrap focusFirst>{children}</FocusTrap>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

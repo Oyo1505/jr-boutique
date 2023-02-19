@@ -1,5 +1,5 @@
-import cn from 'clsx'
-import React, { FC } from 'react'
+import cn from 'clsx';
+import React, { FC } from 'react';
 
 interface ContainerProps {
   className?: string
@@ -16,12 +16,11 @@ const Container: FC<ContainerProps> = ({
 }) => {
   const rootClassName = cn(className, {
     'mx-auto max-w-7xl px-6 w-full': !clean,
-  })
+  });
 
-  let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
-    el as any
+  const Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> = el as any;
 
-  return <Component className={rootClassName}>{children}</Component>
-}
+  return <Component className={rootClassName}>{children}</Component>;
+};
 
-export default Container
+export default Container;

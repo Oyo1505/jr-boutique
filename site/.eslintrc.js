@@ -49,6 +49,20 @@ module.exports = {
     '@typescript-eslint/no-floating-promises' : 'off',
     'default-param-last' : 'off',
     'function-paren-newline' : 'off',
+    'react/react-in-jsx-scope':'off',
+    'import/no-unresolved': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'no-bitwise': 'off',
+    'jsx-a11y/label-has-associated-control': 'off', // a effacer
+    'jsx-a11y/click-events-have-key-events': 'off', // a effacer 
+    'jsx-a11y/no-static-element-interactions' : 'off', //a effacer
+    'jsx-a11y/aria-role' :'off', //a effacer
+    'jsx-a11y/anchor-is-valid' : 'off', //a effacer
+    'no-restricted-exports': 'off',
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'no-undef' : 'off',
     'react/jsx-wrap-multilines': 'off',
     'jsx-quotes': [2, 'prefer-single'],
     '@typescript-eslint/no-misused-promises' : 'off',

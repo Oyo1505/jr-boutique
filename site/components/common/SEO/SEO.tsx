@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import { FC, Fragment, ReactNode } from 'react'
-import config from '@config/seo_meta.json'
+import Head from 'next/head';
+import { FC, Fragment, ReactNode } from 'react';
+import config from '@config/seo_meta.json';
 
-const storeUrl =
-  process.env.NEXT_PUBLIC_STORE_URL || process.env.NEXT_PUBLIC_VERCEL_URL
-const storeBaseUrl = storeUrl ? `https://${storeUrl}` : null
+const storeUrl = process.env.NEXT_PUBLIC_STORE_URL || process.env.NEXT_PUBLIC_VERCEL_URL;
+const storeBaseUrl = storeUrl ? `https://${storeUrl}` : null;
 
 interface OgImage {
   url?: string
@@ -29,34 +28,37 @@ interface Props {
   children?: ReactNode
 }
 
-const ogImage = ({ url, width, height, alt }: OgImage, index: number) => {
+const ogImage = ({
+  url, width, height, alt,
+}: OgImage, index: number) => {
   // generate full URL for OG image url with store base URL
-  const imgUrl = storeBaseUrl ? new URL(url!, storeBaseUrl).toString() : url
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const imgUrl = storeBaseUrl ? new URL(url!, storeBaseUrl).toString() : url;
   return (
     <Fragment key={`og:image:${index}`}>
       <meta
         key={`og:image:url:${index}`}
-        property="og:image"
+        property='og:image'
         content={imgUrl}
       />
       <meta
         key={`og:image:width:${index}`}
-        property="og:image:width"
+        property='og:image:width'
         content={width}
       />
       <meta
         key={`og:image:height:${index}`}
-        property="og:image:height"
+        property='og:image:height'
         content={height}
       />
       <meta
         key={`og:image:alt:${index}`}
-        property="og:image:alt"
+        property='og:image:alt'
         content={alt}
       />
     </Fragment>
-  )
-}
+  );
+};
 
 const SEO: FC<Props> = ({
   title,
@@ -64,7 +66,7 @@ const SEO: FC<Props> = ({
   openGraph,
   robots,
   children,
-}) => {
+}) =>
   /**
    * @see https://nextjs.org/docs/api-reference/next/head
    *
@@ -74,84 +76,84 @@ const SEO: FC<Props> = ({
    *
    * The `key` property makes the tag is only rendered once,
    */
-  return (
+  // eslint-disable-next-line implicit-arrow-linebreak
+  (
     <Head>
-      <title key="title">
+      <title key='title'>
         {title ? `${config.titleTemplate.replace(/%s/g, title)}` : config.title}
       </title>
       <meta
-        key="description"
-        name="description"
+        key='description'
+        name='description'
         content={description || config.description}
       />
       <meta
-        key="og:type"
-        property="og:type"
+        key='og:type'
+        property='og:type'
         content={openGraph?.type ?? config.openGraph.type}
       />
       <meta
-        key="og:title"
-        property="og:title"
+        key='og:title'
+        property='og:title'
         content={
           openGraph?.title ?? config.openGraph.title ?? title ?? config.title
         }
       />
       <meta
-        key="og:description"
-        property="og:description"
+        key='og:description'
+        property='og:description'
         content={
-          openGraph?.description ??
-          config.openGraph.description ??
-          description ??
-          config.description
+          openGraph?.description
+          ?? config.openGraph.description
+          ?? description
+          ?? config.description
         }
       />
       <meta
-        key="og:site_name"
-        property="og:site_name"
+        key='og:site_name'
+        property='og:site_name'
         content={openGraph?.site_name ?? config.openGraph.site_name}
       />
       <meta
-        key="og:url"
-        property="og:url"
+        key='og:url'
+        property='og:url'
         content={openGraph?.url ?? config.openGraph.url}
-      ></meta>
+      />
       {openGraph?.locale && (
-        <meta key="og:locale" property="og:locale" content={openGraph.locale} />
+        <meta key='og:locale' property='og:locale' content={openGraph.locale} />
       )}
       {openGraph?.images?.length
         ? openGraph.images.map((img, index) => ogImage(img, index))
         : ogImage(config.openGraph.images[0], 0)}
       {config.twitter.cardType && (
-        <meta
-          key="twitter:card"
-          name="twitter:card"
-          content={config.twitter.cardType}
-        />
+      <meta
+        key='twitter:card'
+        name='twitter:card'
+        content={config.twitter.cardType}
+      />
       )}
       {config.twitter.site && (
-        <meta
-          key="twitter:site"
-          name="twitter:site"
-          content={config.twitter.site}
-        />
+      <meta
+        key='twitter:site'
+        name='twitter:site'
+        content={config.twitter.site}
+      />
       )}
       {config.twitter.handle && (
-        <meta
-          key="twitter:creator"
-          name="twitter:creator"
-          content={config.twitter.handle}
-        />
-      )}
-      <meta key="robots" name="robots" content={robots ?? 'index,follow'} />
       <meta
-        key="googlebot"
-        name="googlebot"
+        key='twitter:creator'
+        name='twitter:creator'
+        content={config.twitter.handle}
+      />
+      )}
+      <meta key='robots' name='robots' content={robots ?? 'index,follow'} />
+      <meta
+        key='googlebot'
+        name='googlebot'
         content={robots ?? 'index,follow'}
-      ></meta>
+      />
       {children}
     </Head>
-  )
-}
+  );
 
-export default SEO
+export default SEO;

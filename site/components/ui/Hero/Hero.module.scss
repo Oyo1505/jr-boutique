@@ -1,3 +1,4 @@
+/* stylelint-disable scss/at-rule-no-unknown */
 .root {
   @apply flex flex-col py-16 mx-auto;
 }
@@ -14,10 +15,13 @@
   .root {
     @apply flex-row items-start justify-center py-32;
   }
+
   .title {
     @apply text-5xl max-w-xl text-right leading-10 -mt-3;
+
     line-height: 3.5rem;
   }
+
   .description {
     @apply mt-0 ml-6;
   }
@@ -28,3 +32,4 @@
     @apply text-6xl;
   }
 }
+/* stylelint-enable scss/at-rule-no-unknown */

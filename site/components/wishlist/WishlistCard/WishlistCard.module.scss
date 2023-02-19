@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .root {
   @apply relative grid sm:grid-cols-1 lg:grid-cols-12
   w-full gap-6 px-3 py-6 border-b border-accent-2
@@ -18,6 +19,7 @@
 
 .imageWrapper {
   @apply col-span-3;
+
   min-width: 230px;
   width: 230px;
   height: 230px;
@@ -36,3 +38,4 @@
     @apply static col-span-2 flex flex-col justify-between space-y-4;
   }
 }
+/* stylelint-enable no-descending-specificity */

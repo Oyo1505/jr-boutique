@@ -1,9 +1,10 @@
-import cn from 'clsx'
-import React from 'react'
-import s from './Swatch.module.css'
-import { Check } from '@components/icons'
-import Button, { ButtonProps } from '@components/ui/Button'
-import { isDark } from '@lib/colors'
+import cn from 'clsx';
+import React from 'react';
+import { Check } from '@components/icons';
+import Button, { ButtonProps } from '@components/ui/Button';
+import { isDark } from '@lib/colors';
+import s from './Swatch.module.scss';
+
 interface SwatchProps {
   active?: boolean
   children?: any
@@ -21,10 +22,12 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = ({
   variant = 'size',
   ...props
 }) => {
-  variant = variant?.toLowerCase()
+  // eslint-disable-next-line  no-param-reassign
+  variant = variant?.toLowerCase();
 
   if (label) {
-    label = label?.toLowerCase()
+    // eslint-disable-next-line  no-param-reassign
+    label = label?.toLowerCase();
   }
 
   const swatchClassName = cn(
@@ -36,12 +39,12 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = ({
       [s.dark]: color ? isDark(color) : false,
       [s.textLabel]: !color && label && label.length > 3,
     },
-    className
-  )
+    className,
+  );
 
   return (
     <Button
-      role="option"
+      role='option'
       aria-selected={active}
       aria-label={variant && label ? `${variant} ${label}` : 'Variant Swatch'}
       className={swatchClassName}
@@ -56,7 +59,7 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = ({
       )}
       {!color ? label : null}
     </Button>
-  )
-}
+  );
+};
 
-export default React.memo(Swatch)
+export default React.memo(Swatch);

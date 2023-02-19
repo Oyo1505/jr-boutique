@@ -1,7 +1,9 @@
+/* stylelint-disable scss/at-rule-no-unknown */
 .root {
   transition-duration: 0.2s;
   transition-timing-function: ease;
   transition-property: color, background-color, opacity;
+
   @apply p-3 text-accent-9 flex items-center
   justify-center font-semibold cursor-pointer
   bg-accent-0 text-sm;
@@ -15,7 +17,7 @@
   transition-duration: 0.2s;
   transition-timing-function: ease;
   transition-property: transform, fill;
-  color: currentColor;
+  color: currentcolor;
 }
 
 .icon.loading {
@@ -31,3 +33,4 @@
     @apply p-4;
   }
 }
+/* stylelint-enable scss/at-rule-no-unknown */
