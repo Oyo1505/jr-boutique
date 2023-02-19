@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Container } from '@components/ui';
 import { ArrowRight } from '@components/icons';
 import Link from 'next/link';
-import s from './Hero.module.css';
+import s from './Hero.module.scss';
 
 interface HeroProps {
   // eslint-disable-next-line react/no-unused-prop-types

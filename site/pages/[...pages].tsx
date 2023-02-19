@@ -6,7 +6,7 @@ import commerce from '@lib/api/commerce';
 import { Text } from '@components/ui';
 import { Layout } from '@components/common';
 import getSlug from '@lib/get-slug';
-import { missingLocaleInPages } from '@lib/usage-warns';
+import missingLocaleInPages from '@lib/usage-warns';
 import type { Page } from '@commerce/types/page';
 import { useRouter } from 'next/router';
 

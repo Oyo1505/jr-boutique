@@ -7,7 +7,7 @@ import {
   DropdownContent,
   DropdownMenuItem,
 } from '@components/ui/Dropdown/Dropdown';
-import s from './CustomerMenuContent.module.scss';
+import s from './CustomerMenuContent.module.css';
 
 const LINKS = [
   {

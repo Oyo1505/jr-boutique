@@ -7,7 +7,7 @@ import { useUI } from '@components/ui/context';
 import { Navbar, Footer } from '@components/common';
 import ShippingView from '@components/checkout/ShippingView';
 import CartSidebarView from '@components/cart/CartSidebarView';
-import { useAcceptCookies } from '@lib/hooks/useAcceptCookies';
+import useAcceptCookies from '@lib/hooks/useAcceptCookies';
 import { Sidebar, Button, LoadingDots } from '@components/ui';
 import PaymentMethodView from '@components/checkout/PaymentMethodView';
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView';

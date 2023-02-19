@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable default-case */
 import React, {
   FC, ReactNode, useCallback, useMemo,
 } from 'react';
@@ -65,7 +67,7 @@ type SIDEBAR_VIEWS = 'CART_VIEW' | 'CHECKOUT_VIEW' | 'PAYMENT_METHOD_VIEW'
 export const UIContext = React.createContext<State | any>(initialState);
 
 UIContext.displayName = 'UIContext';
-// eslint-disable-next-line consistent-return
+
 function uiReducer(state: State, action: Action) {
   switch (action.type) {
     case 'OPEN_SIDEBAR': {
@@ -123,8 +125,6 @@ function uiReducer(state: State, action: Action) {
         userAvatar: action.value,
       };
     }
-    default:
-      break;
   }
 }
 

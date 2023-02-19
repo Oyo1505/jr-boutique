@@ -10,7 +10,7 @@ import usePrice from '@framework/product/use-price';
 import useAddItem from '@framework/cart/use-add-item';
 import useRemoveItem from '@framework/wishlist/use-remove-item';
 import type { WishlistItem } from '@commerce/types/wishlist';
-import s from './WishlistCard.module.scss';
+import s from './WishlistCard.module.css';
 
 const placeholderImg = '/product-img-placeholder.svg';
 
