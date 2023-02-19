@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react';
-import useUserAvatar from '@lib/hooks/useUserAvatar';
+import { useUserAvatar } from '@lib/hooks/useUserAvatar';
 
 interface Props {
   // eslint-disable-next-line  react/no-unused-prop-types
