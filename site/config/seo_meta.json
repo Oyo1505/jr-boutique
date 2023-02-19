@@ -1,13 +1,13 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
+  "title": "JR Boutique",
   "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "description": "JR boutique à Besançon",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "JR Boutique",
+    "description": "JR Boutique à Besançon",
     "type": "website",
     "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "site_name": "Jr Boutique",
     "images": [
       {
         "url": "/card.png",

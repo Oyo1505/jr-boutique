@@ -1,6 +1,6 @@
 const commerce = require('./commerce.config.json')
 const { withCommerceConfig, getProviderName } = require('./commerce-config')
-
+const path = require('path')
 const provider = commerce.provider || getProviderName()
 const isBC = provider === '@vercel/commerce-bigcommerce'
 const isShopify = provider === '@vercel/commerce-shopify'
@@ -13,6 +13,9 @@ module.exports = withCommerceConfig({
   i18n: {
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
   },
   rewrites() {
     return [
