@@ -3,7 +3,7 @@ import React, { FC, ReactNode, useState } from 'react';
 import { ChevronRight } from '@components/icons';
 import { useSpring, a } from '@react-spring/web';
 import useMeasure from 'react-use-measure';
-import s from './Collapse.module.css';
+import s from './Collapse.module.scss';
 
 export interface CollapseProps {
   title: string

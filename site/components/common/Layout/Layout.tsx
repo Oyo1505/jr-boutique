@@ -15,7 +15,7 @@ import { CheckoutProvider } from '@components/checkout/context';
 import { MenuSidebarView } from '@components/common/UserNav';
 import type { Page } from '@commerce/types/page';
 import type { Category } from '@commerce/types/site';
-import s from './Layout.module.css';
+import s from './Layout.module.scss';
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView';
 
 const Loading = () => (

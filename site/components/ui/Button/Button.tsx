@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { LoadingDots } from '@components/ui';
-import s from './Button.module.css';
+import s from './Button.module.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string

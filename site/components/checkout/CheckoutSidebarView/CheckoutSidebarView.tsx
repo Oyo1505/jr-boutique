@@ -10,7 +10,7 @@ import usePrice from '@framework/product/use-price';
 import useCheckout from '@framework/checkout/use-checkout';
 import ShippingWidget from '../ShippingWidget';
 import PaymentWidget from '../PaymentWidget';
-import s from './CheckoutSidebarView.module.css';
+import s from './CheckoutSidebarView.module.scss';
 import { useCheckoutContext } from '../context';
 
 const CheckoutSidebarView: FC = () => {

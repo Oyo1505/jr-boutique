@@ -1,5 +1,5 @@
 import cn from 'clsx';
-import s from './ProductTag.module.css';
+import s from './ProductTag.module.scss';
 
 interface ProductTagProps {
   className?: string

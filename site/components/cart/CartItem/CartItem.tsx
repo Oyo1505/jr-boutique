@@ -10,7 +10,7 @@ import usePrice from '@framework/product/use-price';
 import useUpdateItem from '@framework/cart/use-update-item';
 import useRemoveItem from '@framework/cart/use-remove-item';
 import Quantity from '@components/ui/Quantity';
-import s from './CartItem.module.css';
+import s from './CartItem.module.scss';
 
 type ItemOption = {
   name: string

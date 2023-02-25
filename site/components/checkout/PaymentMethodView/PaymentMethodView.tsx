@@ -6,7 +6,7 @@ import { Button, Text } from '@components/ui';
 import { useUI } from '@components/ui/context';
 import SidebarLayout from '@components/common/SidebarLayout';
 
-import s from './PaymentMethodView.module.css';
+import s from './PaymentMethodView.module.scss';
 
 interface Form extends HTMLFormElement {
   cardHolder: HTMLInputElement

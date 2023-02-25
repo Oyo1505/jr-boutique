@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Logo, Container } from '@components/ui';
 import { Searchbar, UserNav } from '@components/common';
-import s from './Navbar.module.css';
+import s from './Navbar.module.scss';
 import NavbarRoot from './NavbarRoot';
 
 interface ILink {

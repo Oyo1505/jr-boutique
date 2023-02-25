@@ -5,7 +5,7 @@ import { Grid } from '@components/ui';
 import { ProductCard } from '@components/product';
 import { getCategoryPath, getDesignerPath } from '@lib/search';
 import { Brand, Category } from '@commerce/types/site';
-import s from './HomeAllProductsGrid.module.css';
+import s from './HomeAllProductsGrid.module.scss';
 
 interface Props {
   categories?: Category[]

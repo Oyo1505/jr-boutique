@@ -14,7 +14,7 @@ import {
 
 import type { LineItem } from '@commerce/types/cart';
 import CustomerMenuContent from './CustomerMenuContent';
-import s from './UserNav.module.css';
+import s from './UserNav.module.scss';
 
 const countItem = (count: number, item: LineItem) => count + item.quantity;
 

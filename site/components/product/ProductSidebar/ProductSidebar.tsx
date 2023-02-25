@@ -11,7 +11,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers';
-import s from './ProductSidebar.module.css';
+import s from './ProductSidebar.module.scss';
 
 interface ProductSidebarProps {
   product: Product

@@ -1,7 +1,7 @@
 import { FC, memo, useEffect } from 'react';
 import cn from 'clsx';
 import { useRouter } from 'next/router';
-import s from './Searchbar.module.css';
+import s from './Searchbar.module.scss';
 
 interface Props {
   className?: string

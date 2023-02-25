@@ -3,7 +3,7 @@ import {
 } from 'react';
 import throttle from 'lodash.throttle';
 import cn from 'clsx';
-import s from './Navbar.module.css';
+import s from './Navbar.module.scss';
 
 const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
   const [hasScrolled, setHasScrolled] = useState(false);

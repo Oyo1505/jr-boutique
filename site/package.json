@@ -2,6 +2,7 @@
   "name": "next-commerce",
   "version": "0.0.1",
   "license": "MIT",
+  "types": "declaration.d.ts",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -39,11 +40,11 @@
     "react-merge-refs": "^2.0.1",
     "react-use-measure": "^2.1.1",
     "run": "^1.4.0",
-    "tabbable": "^5.2.1",
-    "tailwindcss": "^3.0.13"
+    "tabbable": "^5.2.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.8",
+    "@next/eslint-plugin-next": "^13.2.1",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/js-cookie": "^3.0.1",
     "@types/lodash.random": "^3.2.6",
@@ -53,11 +54,13 @@
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
+    "deepmerge": "^4.2.2",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^12.0.8",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
