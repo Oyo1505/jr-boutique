@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { Logo, Container } from '@components/ui';
+import { Container } from '@components/ui';
 import { Searchbar, UserNav } from '@components/common';
+import Image from 'next/image';
 import s from './Navbar.module.scss';
 import NavbarRoot from './NavbarRoot';
+import headerLogo from '../../../public/assets/images/header/Header.png';
 
 interface ILink {
   href: string
@@ -16,16 +18,13 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
-    <Container clean className='mx-auto max-w-8xl px-6'>
+    <Container clean>
       <div className={s.nav}>
-        <div className='flex items-center flex-1'>
+        <div>
           <Link href='/' className={s.logo} aria-label='Logo'>
-            <Logo />
+            <Image src={headerLogo} alt='header-logo' />
           </Link>
           <nav className={s.navMenu}>
-            <Link href='/search' className={s.link}>
-              All
-            </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href} className={s.link}>
                 {l.label}

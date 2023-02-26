@@ -101,13 +101,36 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
 
 const Layout: React.FC<Props> = ({
   children,
-  pageProps: { categories = [], ...pageProps },
+  pageProps: { ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
   const { locale = 'en-US' } = useRouter();
-  const navBarlinks = categories.slice(0, 2).map((c) => ({
+  const categories = [{
+    name: 'fromages',
+    slug: '/formages',
+  }, {
+    name: 'charcuteries',
+    slug: '/charcuteries',
+  }, {
+    name: 'produits frais',
+    slug: '/produits-frais',
+  }, {
+    name: 'vin',
+    slug: '/vins',
+  }, {
+    name: 'epicerie',
+    slug: '/epicerie',
+  }, {
+    name: 'promotions',
+    slug: '/promotions',
+  }, {
+    name: 'contact',
+    slug: '/contact',
+  }];
+
+  const navBarlinks = categories.map((c) => ({
     label: c.name,
-    href: `/search/${c.slug}`,
+    href: `/${c.slug}`,
   }));
 
   return (

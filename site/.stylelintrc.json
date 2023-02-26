@@ -13,7 +13,7 @@
       true,
       {
         "ignoreFontFamilies": [
-          "/^montserrat-.*|roboto-.*$/"
+          "/^rubik-.*|courgette-.*$/"
         ]
       }
     ],

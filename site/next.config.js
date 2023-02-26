@@ -17,6 +17,7 @@ module.exports = withCommerceConfig({
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+    prependData: '@import "styles.scss";',
   },
   rewrites() {
     return [

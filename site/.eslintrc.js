@@ -38,6 +38,7 @@ module.exports = {
   ignorePatterns: ['/src/**/__tests__/*', 'src/**/*.js', 'src/**/*containsNullOrUndefined.ts', 'src/react-app-env.d.ts'],
   rules: {
     /* Règles de typescript-eslint/recommended-requiring-type-checking */
+    "linebreak-style": "off",
     '@typescript-eslint/no-unsafe-assignment' : 'off',
     '@typescript-eslint/no-unsafe-argument' : 'off',
     '@typescript-eslint/no-unsafe-member-access' : 'off',
@@ -47,6 +48,7 @@ module.exports = {
     'no-unsafe-optional-chaining' : 'off',
     '@typescript-eslint/no-unsafe-return' : 'off',
     '@typescript-eslint/no-floating-promises' : 'off',
+    'no-empty-source' : "off",
     'default-param-last' : 'off',
     'function-paren-newline' : 'off',
     'react/react-in-jsx-scope':'off',
