@@ -17,7 +17,7 @@ const Container: FC<ContainerProps> = ({
 }) => {
   const Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> = el as any;
 
-  return <Component className={cn(className, s.container)}>
+  return <Component className={cn(className, s.container, clean)}>
     {children}
   </Component>;
 };
