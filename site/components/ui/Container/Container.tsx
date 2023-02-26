@@ -1,5 +1,6 @@
 import cn from 'clsx';
 import React, { FC } from 'react';
+import s from './container.module.scss';
 
 interface ContainerProps {
   className?: string
@@ -14,13 +15,11 @@ const Container: FC<ContainerProps> = ({
   el = 'div',
   clean = false, // Full Width Screen
 }) => {
-  const rootClassName = cn(className, {
-    'mx-auto max-w-7xl px-6 w-full': !clean,
-  });
-
   const Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> = el as any;
 
-  return <Component className={rootClassName}>{children}</Component>;
+  return <Component className={cn(className, s.container)}>
+    {children}
+  </Component>;
 };
 
 export default Container;

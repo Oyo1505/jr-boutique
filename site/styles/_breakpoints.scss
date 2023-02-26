@@ -2,13 +2,7 @@ $xs-width: 360px;
 $sm-width: 700px;
 $md-width: 1240px;
 $lg-width: 1440px;
-$is-not-13-inches: true;
 
-@mixin on-13-inches {
-  @media only screen and (min-width: 740px) and (max-width: 1450px) {
-    @content;
-  }
-}
 
 @mixin below($maxWidth) { @media (max-width: $maxWidth) { @content; } }
 
@@ -20,52 +14,19 @@ $is-not-13-inches: true;
 
 @mixin below-sm {
   @media (max-width: $sm-width) {
-    $is-not-13-inches: true;
-
-    @if $is-not-13-inches {
       @content;
-    }
-  }
-
-  @include on-13-inches {
-    @media (max-width: calc($sm-width * 0.8)) {
-      $is-not-13-inches: false;
-      @content;
-    }
   }
 }
 
 @mixin below-md {
-  @include on-13-inches {
-    @media (max-width: calc($md-width * 0.8)) {
-      $is-not-13-inches: false;
-      @content;
-    }
-  }
-
   @media (max-width: $md-width) {
-    $is-not-13-inches: true;
-
-    @if $is-not-13-inches {
       @content;
-    }
   }
 }
 
 @mixin below-lg {
-  @include on-13-inches {
-    @media (max-width: calc($lg-width * 0.8)) {
-      $is-not-13-inches: false;
-      @content;
-    }
-  }
-
   @media (max-width: $lg-width) {
-    $is-not-13-inches: true;
-
-    @if $is-not-13-inches {
-      @content;
-    }
+    @content;
   }
 }
 

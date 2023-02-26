@@ -107,25 +107,25 @@ const Layout: React.FC<Props> = ({
   const { locale = 'en-US' } = useRouter();
   const categories = [{
     name: 'fromages',
-    slug: '/formages',
+    slug: 'formages',
   }, {
     name: 'charcuteries',
-    slug: '/charcuteries',
+    slug: 'charcuteries',
   }, {
     name: 'produits frais',
-    slug: '/produits-frais',
+    slug: 'produits-frais',
   }, {
     name: 'vin',
-    slug: '/vins',
+    slug: 'vins',
   }, {
     name: 'epicerie',
-    slug: '/epicerie',
+    slug: 'epicerie',
   }, {
     name: 'promotions',
-    slug: '/promotions',
+    slug: 'promotions',
   }, {
     name: 'contact',
-    slug: '/contact',
+    slug: 'contact',
   }];
 
   const navBarlinks = categories.map((c) => ({
