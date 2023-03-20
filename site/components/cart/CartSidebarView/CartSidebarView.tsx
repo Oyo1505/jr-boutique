@@ -80,12 +80,12 @@ const CartSidebarView: FC = () => {
             </Link>
             <ul className={s.lineItemsList}>
               {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-              {data!.lineItems.map((item: any) => (
+              {data?.lineItems.map((item: any) => (
                 <CartItem
                   key={item.id}
                   item={item}
                   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-                  currencyCode={data!.currency.code}
+                  currencyCode={data.currency.code}
                 />
               ))}
             </ul>

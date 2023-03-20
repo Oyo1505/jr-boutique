@@ -24,7 +24,7 @@ const UserNav: React.FC<{
   const { data } = useCart();
   const { data: isCustomerLoggedIn } = useCustomer();
   const {
-    closeSidebarIfPresent, openModal, setSidebarView, openSidebar,
+    openModal, setSidebarView, openSidebar,
   } = useUI();
 
   const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0;
@@ -51,15 +51,6 @@ const UserNav: React.FC<{
                 <span className={s.bagCount}>{itemsCount}</span>
               )}
             </Button>
-          </li>
-        )}
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
-          <li className={s.item}>
-            <Link href='/wishlist'>
-              <button onClick={closeSidebarIfPresent} type='button' aria-label='Wishlist'>
-                <Heart />
-              </button>
-            </Link>
           </li>
         )}
         {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (

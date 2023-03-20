@@ -69,11 +69,11 @@ const CheckoutSidebarView: FC = () => {
         />
 
         <ul className={s.lineItemsList}>
-          {cartData!.lineItems.map((item: any) => (
+          {cartData?.lineItems.map((item: any) => (
             <CartItem
               key={item.id}
               item={item}
-              currencyCode={cartData!.currency.code}
+              currencyCode={cartData.currency.code}
               variant='display'
             />
           ))}
