@@ -1,8 +1,10 @@
 import React from "react";
+import { Container, Text } from '@components/ui';
+import { Layout } from '@components/common';
 
-const LoginPage = () => {
+export default function LoginPage ()  {
   console.log('d')
-  return(<div>Login Page</div>)
+  return(<Container clean>Login Page</Container>)
 }
 
-export default LoginPage
+LoginPage.Layout = Layout
