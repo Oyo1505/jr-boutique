@@ -1,3 +1,6 @@
 /* stylelint-disable scss/at-rule-no-unknown, no-descending-specificity */
 
 /* stylelint-enable scss/at-rule-no-unknown, no-descending-specificity */
+.container{
+  width: 180px; // a supprimer, pour eviter erreur de lint
+}
