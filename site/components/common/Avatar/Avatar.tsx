@@ -4,7 +4,7 @@ import useUserAvatar from '@lib/hooks/useUserAvatar';
 interface Props {
   // eslint-disable-next-line  react/no-unused-prop-types
   className?: string
-   /* eslint-disable-next-line  react/no-unused-prop-types */
+  /* eslint-disable-next-line  react/no-unused-prop-types */
   children?: any
 }
 

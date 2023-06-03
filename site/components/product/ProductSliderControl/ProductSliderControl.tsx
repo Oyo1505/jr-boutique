@@ -8,7 +8,10 @@ interface IProductSliderControl {
   onNext: MouseEventHandler<HTMLButtonElement>
 }
 
-const ProductSliderControl: FC<IProductSliderControl> = ({ onPrev, onNext }) => (
+const ProductSliderControl: FC<IProductSliderControl> = ({
+  onPrev,
+  onNext,
+}) => (
   <div className={s.control}>
     <button
       type='button'

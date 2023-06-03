@@ -60,7 +60,9 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
       if (
         touchXPosition - touchXRadius < 10
         || touchXPosition + touchXRadius > window.innerWidth - 10
-      ) { event.preventDefault(); }
+      ) {
+        event.preventDefault();
+      }
     };
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
     const slider = sliderContainerRef?.current!;

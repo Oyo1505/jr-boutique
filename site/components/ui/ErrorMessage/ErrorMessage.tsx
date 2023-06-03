@@ -21,11 +21,11 @@ const ErrorMessages: FC<ErrorMessageProps> = ({ error, className }) => (
   >
     <span>{error.message}</span>
     {error.errors && error.errors?.length > 0 && (
-    <ul className='list-disc list-inside'>
-      {error.errors.map(({ message }, index) => (
-        <li key={index}>{message}</li>
-      ))}
-    </ul>
+      <ul className='list-disc list-inside'>
+        {error.errors.map(({ message }, index) => (
+          <li key={index}>{message}</li>
+        ))}
+      </ul>
     )}
   </div>
 );

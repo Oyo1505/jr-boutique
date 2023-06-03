@@ -12,26 +12,19 @@
     "font-family-no-missing-generic-family-keyword": [
       true,
       {
-        "ignoreFontFamilies": [
-          "/^rubik-.*|courgette-.*$/"
-        ]
+        "ignoreFontFamilies": ["/^rubik-.*|courgette-.*$/"]
       }
     ],
     "property-no-unknown": [
       true,
       {
-        "ignoreProperties": [
-          "ariane_height"
-        ]
+        "ignoreProperties": ["ariane_height"]
       }
     ],
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        "ignorePseudoClasses": [
-          "export",
-          "global"
-        ]
+        "ignorePseudoClasses": ["export", "global"]
       }
     ]
   }

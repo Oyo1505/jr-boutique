@@ -51,7 +51,11 @@ const I18nWidget: FC = () => {
           className='flex items-center relative'
           onClick={() => setDisplay(!display)}
         >
-          <button type='button' className={s.button} aria-label='Language selector'>
+          <button
+            type='button'
+            className={s.button}
+            aria-label='Language selector'
+          >
             <Image
               width='20'
               height='20'

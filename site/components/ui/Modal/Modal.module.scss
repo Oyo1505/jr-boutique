@@ -13,11 +13,10 @@
   background-color: $white;
   position: relative;
   padding: 50px;
-
 }
 
 .modal:focus {
-  outline:none;
+  outline: none;
 }
 
 .close {
@@ -28,7 +27,7 @@
   top: 0;
   margin: 24px;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }

@@ -3,8 +3,11 @@ $sm-width: 700px;
 $md-width: 1240px;
 $lg-width: 1440px;
 
-
-@mixin below($maxWidth) { @media (max-width: $maxWidth) { @content; } }
+@mixin below($maxWidth) {
+  @media (max-width: $maxWidth) {
+    @content;
+  }
+}
 
 @mixin below-xs {
   @media (max-width: $xs-width) {
@@ -14,13 +17,13 @@ $lg-width: 1440px;
 
 @mixin below-sm {
   @media (max-width: $sm-width) {
-      @content;
+    @content;
   }
 }
 
 @mixin below-md {
   @media (max-width: $md-width) {
-      @content;
+    @content;
   }
 }
 
@@ -30,7 +33,11 @@ $lg-width: 1440px;
   }
 }
 
-@mixin above($minWidth) { @media (min-width: $minWidth) { @content; } }
+@mixin above($minWidth) {
+  @media (min-width: $minWidth) {
+    @content;
+  }
+}
 
 @mixin above-xs {
   @media (min-width: $xs-width) {

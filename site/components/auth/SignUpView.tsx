@@ -78,7 +78,7 @@ const SignUpView: FC = () => {
         {message && (
           <div
             className='text-red border border-red p-3'
-          // eslint-disable-next-line react/no-danger
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: message,
             }}
@@ -115,7 +115,7 @@ const SignUpView: FC = () => {
           <span className='text-accent-7'>Do you have an account?</span>
           {' '}
           <a
-          // eslint-disable-next-line  jsx-a11y/no-static-element-interactions
+            // eslint-disable-next-line  jsx-a11y/no-static-element-interactions
             className='text-accent-9 font-bold hover:underline cursor-pointer'
             onClick={() => setModalView('LOGIN_VIEW')}
           >

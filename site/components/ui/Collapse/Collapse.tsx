@@ -17,7 +17,10 @@ const Collapse: FC<CollapseProps> = ({ title, children }) => {
   const animProps = useSpring({
     height: isActive ? viewHeight : 0,
     config: {
-      tension: 250, friction: 32, clamp: true, duration: 150,
+      tension: 250,
+      friction: 32,
+      clamp: true,
+      duration: 150,
     },
     opacity: isActive ? 1 : 0,
   });

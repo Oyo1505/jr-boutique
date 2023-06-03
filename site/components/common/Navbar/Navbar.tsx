@@ -35,9 +35,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             </Link>
           ))}
           {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className={s.searchBar}>
-            loupe
-          </div>
+            <div className={s.searchBar}>loupe</div>
           )}
         </nav>
       </div>

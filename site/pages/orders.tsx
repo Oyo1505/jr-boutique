@@ -28,12 +28,8 @@ export default function Orders() {
         <span>
           <Bag />
         </span>
-        <h2>
-          No orders found
-        </h2>
-        <p>
-          Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-        </p>
+        <h2>No orders found</h2>
+        <p>Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.</p>
       </div>
     </Container>
   );

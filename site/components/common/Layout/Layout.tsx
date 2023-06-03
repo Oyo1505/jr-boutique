@@ -99,34 +99,39 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
   ) : null;
 };
 
-const Layout: React.FC<Props> = ({
-  children,
-  pageProps: { ...pageProps },
-}) => {
+const Layout: React.FC<Props> = ({ children, pageProps: { ...pageProps } }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
   const { locale = 'en-US' } = useRouter();
-  const categories = [{
-    name: 'fromages',
-    slug: 'formages',
-  }, {
-    name: 'charcuteries',
-    slug: 'charcuteries',
-  }, {
-    name: 'produits frais',
-    slug: 'produits-frais',
-  }, {
-    name: 'vin',
-    slug: 'vins',
-  }, {
-    name: 'epicerie',
-    slug: 'epicerie',
-  }, {
-    name: 'promotions',
-    slug: 'promotions',
-  }, {
-    name: 'contact',
-    slug: 'contact',
-  }];
+  const categories = [
+    {
+      name: 'fromages',
+      slug: 'formages',
+    },
+    {
+      name: 'charcuteries',
+      slug: 'charcuteries',
+    },
+    {
+      name: 'produits frais',
+      slug: 'produits-frais',
+    },
+    {
+      name: 'vin',
+      slug: 'vins',
+    },
+    {
+      name: 'epicerie',
+      slug: 'epicerie',
+    },
+    {
+      name: 'promotions',
+      slug: 'promotions',
+    },
+    {
+      name: 'contact',
+      slug: 'contact',
+    },
+  ];
 
   const navBarlinks = categories.map((c) => ({
     label: c.name,

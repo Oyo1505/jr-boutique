@@ -35,11 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, onClose }) => {
   }, []);
 
   return (
-    <div
-      className={cn(s.root)}
-      ref={sidebarRef}
-      onKeyDown={onKeyDownSidebar}
-    >
+    <div className={cn(s.root)} ref={sidebarRef} onKeyDown={onKeyDownSidebar}>
       <div className='absolute inset-0 overflow-hidden'>
         <div className={s.backdrop} onClick={onClose} />
         <section className='absolute inset-y-0 right-0 w-full md:w-auto max-w-full flex outline-none md:pl-10'>

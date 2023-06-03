@@ -1,4 +1,4 @@
-.container{
+.container {
   width: 1000px;
   margin: 0 auto;
   position: relative;
@@ -6,32 +6,33 @@
   padding: 50px;
 }
 
-.asideContainer{
+.asideContainer {
   position: absolute;
   right: 0;
 }
 
-.searchBar{
+.searchBar {
   width: 16px;
   height: 16px;
 }
 
-.logoReseau{
+.logoReseau {
   width: 166px;
   height: 116px;
-  background: url('../../../public/assets/images/header/reseaux.png') center no-repeat;
+  background: url('../../../public/assets/images/header/reseaux.png') center
+    no-repeat;
   display: flex;
   flex-direction: column;
 
-  a{
+  a {
     height: 50%;
   }
 }
 
-.link{
+.link {
   font-family: rubik-bold;
   text-transform: uppercase;
-  color :$black;
+  color: $black;
   font-size: $font-size-3;
   text-decoration: none;
 }

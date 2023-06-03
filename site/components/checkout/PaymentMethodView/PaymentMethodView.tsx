@@ -53,7 +53,9 @@ const PaymentMethodView: FC = () => {
           <Text variant='sectionHeading'> Payment Method</Text>
           <div>
             <div className={s.fieldset}>
-              <label htmlFor='cardHolder' className={s.label}>Cardholder Name</label>
+              <label htmlFor='cardHolder' className={s.label}>
+                Cardholder Name
+              </label>
               <input name='cardHolder' className={s.input} />
             </div>
             <div className='grid gap-3 grid-flow-row grid-cols-12'>
@@ -62,7 +64,9 @@ const PaymentMethodView: FC = () => {
                 <input name='cardNumber' className={s.input} />
               </div>
               <div className={cn(s.fieldset, 'col-span-3')}>
-                <label htmlFor='cardExpireDate' className={s.label}>Expires</label>
+                <label htmlFor='cardExpireDate' className={s.label}>
+                  Expires
+                </label>
                 <input
                   name='cardExpireDate'
                   className={s.input}
@@ -70,27 +74,37 @@ const PaymentMethodView: FC = () => {
                 />
               </div>
               <div className={cn(s.fieldset, 'col-span-2')}>
-                <label htmlFor='cardCvc' className={s.label}>CVC</label>
+                <label htmlFor='cardCvc' className={s.label}>
+                  CVC
+                </label>
                 <input name='cardCvc' className={s.input} />
               </div>
             </div>
             <hr className='border-accent-2 my-6' />
             <div className='grid gap-3 grid-flow-row grid-cols-12'>
               <div className={cn(s.fieldset, 'col-span-6')}>
-                <label htmlFor='firstName' className={s.label}>First Name</label>
+                <label htmlFor='firstName' className={s.label}>
+                  First Name
+                </label>
                 <input name='firstName' className={s.input} />
               </div>
               <div className={cn(s.fieldset, 'col-span-6')}>
-                <label htmlFor='lastName' className={s.label}>Last Name</label>
+                <label htmlFor='lastName' className={s.label}>
+                  Last Name
+                </label>
                 <input name='lastName' className={s.input} />
               </div>
             </div>
             <div className={s.fieldset}>
-              <label htmlFor='company' className={s.label}>Company (Optional)</label>
+              <label htmlFor='company' className={s.label}>
+                Company (Optional)
+              </label>
               <input name='company' className={s.input} />
             </div>
             <div className={s.fieldset}>
-              <label htmlFor='streetNumber' className={s.label}>Street and House Number</label>
+              <label htmlFor='streetNumber' className={s.label}>
+                Street and House Number
+              </label>
               <input name='streetNumber' className={s.input} />
             </div>
             <div className={s.fieldset}>
@@ -101,16 +115,22 @@ const PaymentMethodView: FC = () => {
             </div>
             <div className='grid gap-3 grid-flow-row grid-cols-12'>
               <div className={cn(s.fieldset, 'col-span-6')}>
-                <label htmlFor='zipCode' className={s.label}>Postal Code</label>
+                <label htmlFor='zipCode' className={s.label}>
+                  Postal Code
+                </label>
                 <input name='zipCode' className={s.input} />
               </div>
               <div className={cn(s.fieldset, 'col-span-6')}>
-                <label htmlFor='city' className={s.label}>City</label>
+                <label htmlFor='city' className={s.label}>
+                  City
+                </label>
                 <input name='city' className={s.input} />
               </div>
             </div>
             <div className={s.fieldset}>
-              <label htmlFor='country' className={s.label}>Country/Region</label>
+              <label htmlFor='country' className={s.label}>
+                Country/Region
+              </label>
               <select name='country' className={s.select}>
                 <option>Hong Kong</option>
               </select>

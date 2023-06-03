@@ -4,9 +4,7 @@ import useCart from '@framework/cart/use-cart';
 import { useUI } from '@components/ui/context';
 import { Bag, Menu } from '@components/icons';
 import React from 'react';
-import {
-  Button,
-} from '@components/ui';
+import { Button } from '@components/ui';
 
 import type { LineItem } from '@commerce/types/cart';
 
@@ -19,9 +17,7 @@ const UserNav: React.FC<{
 }> = ({ className }) => {
   const { data } = useCart();
 
-  const {
-    setSidebarView, openSidebar,
-  } = useUI();
+  const { setSidebarView, openSidebar } = useUI();
 
   const itemsCount = data?.lineItems?.reduce(countItem, 0) ?? 0;
   return (
@@ -48,7 +44,6 @@ const UserNav: React.FC<{
         {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
           <li className={s.item}>
             <Link href='/login'>Login</Link>
-
           </li>
         )}
         <li className={s.mobileMenu}>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
 
-const Epicerie:FC = () => (<>Epicerie</>);
+const Epicerie: FC = () => <>Epicerie</>;
 
 export default Epicerie;

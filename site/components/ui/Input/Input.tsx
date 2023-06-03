@@ -10,7 +10,11 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: React.FC<InputProps> = (props) => {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    className, children, onChange, ...rest
+    className,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    children,
+    onChange,
+    ...rest
   } = props;
 
   const rootClassName = cn(s.root, {}, className);
