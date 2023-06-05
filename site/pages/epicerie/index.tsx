@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { Layout } from '@components/common';
 
-const Epicerie: FC = () => <>Epicerie</>;
+export default function Epicerie() { return (<>Epicerie</>); }
 
-export default Epicerie;
+Epicerie.Layout = Layout;

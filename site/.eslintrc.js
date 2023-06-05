@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'prettier',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -15,7 +14,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir: './',
     project: ['./tsconfig.json'],
     ecmaFeatures: {
       jsx: true,
@@ -27,7 +26,6 @@ module.exports = {
     'react',
     '@next/eslint-plugin-next',
     '@typescript-eslint',
-    'prettier',
   ],
   settings: {
     react: {

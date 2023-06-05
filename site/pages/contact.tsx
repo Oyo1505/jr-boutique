@@ -1,5 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { Layout } from '@components/common';
 
-const Contact: FC = () => <>Contact</>;
+const Contact = () => (
+  <>Contact</>
+);
+
+Contact.Layout = Layout;
 
 export default Contact;

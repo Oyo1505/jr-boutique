@@ -1,5 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { Layout } from '@components/common';
 
-const Promotions: FC = () => <>Promotions</>;
+const Promotions = () => (
+  <>Promotions</>
+);
+
+Promotions.Layout = Layout;
 
 export default Promotions;
