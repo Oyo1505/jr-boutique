@@ -1,11 +1,13 @@
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
-export const useToggleTheme = () => {
-  const { theme, themes, setTheme } = useTheme()
-  const [themeValue, setThemeValue] = useState<string>('system')
+const useToggleTheme = () => {
+  const { theme, themes, setTheme } = useTheme();
+  const [themeValue, setThemeValue] = useState<string>('system');
 
-  useEffect(() => setThemeValue(theme), [theme])
+  useEffect(() => setThemeValue(theme), [theme]);
 
-  return { theme: themeValue, setTheme, themes }
-}
+  return { theme: themeValue, setTheme, themes };
+};
+
+export default useToggleTheme;

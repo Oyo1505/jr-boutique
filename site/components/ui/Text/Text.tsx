@@ -2,9 +2,9 @@ import React, {
   FunctionComponent,
   JSXElementConstructor,
   CSSProperties,
-} from 'react'
-import cn from 'clsx'
-import s from './Text.module.css'
+} from 'react';
+import cn from 'clsx';
+import s from './Text.module.scss';
 
 interface TextProps {
   variant?: Variant
@@ -32,19 +32,19 @@ const Text: FunctionComponent<TextProps> = ({
     heading: 'h1',
     pageHeading: 'h1',
     sectionHeading: 'h2',
-  }
+  };
 
   const Component:
     | JSXElementConstructor<any>
     | React.ReactElement<any>
     | React.ComponentType<any>
-    | string = componentsMap![variant!]
+    | string = componentsMap[variant];
 
   const htmlContentProps = html
     ? {
-        dangerouslySetInnerHTML: { __html: html },
-      }
-    : {}
+      dangerouslySetInnerHTML: { __html: html },
+    }
+    : {};
 
   return (
     <Component
@@ -56,7 +56,7 @@ const Text: FunctionComponent<TextProps> = ({
           [s.pageHeading]: variant === 'pageHeading',
           [s.sectionHeading]: variant === 'sectionHeading',
         },
-        className
+        className,
       )}
       onClick={onClick}
       style={style}
@@ -64,7 +64,7 @@ const Text: FunctionComponent<TextProps> = ({
     >
       {children}
     </Component>
-  )
-}
+  );
+};
 
-export default Text
+export default Text;

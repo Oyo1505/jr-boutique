@@ -6,9 +6,9 @@ import React, {
   useContext,
   createContext,
   ReactNode,
-} from 'react'
-import type { CardFields } from '@commerce/types/customer/card'
-import type { AddressFields } from '@commerce/types/customer/address'
+} from 'react';
+import type { CardFields } from '@commerce/types/customer/card';
+import type { AddressFields } from '@commerce/types/customer/address';
 
 export type State = {
   cardFields: CardFields
@@ -37,11 +37,11 @@ type Action =
 const initialState: State = {
   cardFields: {} as CardFields,
   addressFields: {} as AddressFields,
-}
+};
 
-export const CheckoutContext = createContext<State | any>(initialState)
+export const CheckoutContext = createContext<State | any>(initialState);
 
-CheckoutContext.displayName = 'CheckoutContext'
+CheckoutContext.displayName = 'CheckoutContext';
 
 const checkoutReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -49,48 +49,47 @@ const checkoutReducer = (state: State, action: Action): State => {
       return {
         ...state,
         cardFields: action.card,
-      }
+      };
     case 'SET_ADDRESS_FIELDS':
       return {
         ...state,
         addressFields: action.address,
-      }
+      };
     case 'CLEAR_CHECKOUT_FIELDS':
       return {
         ...state,
         cardFields: initialState.cardFields,
         addressFields: initialState.addressFields,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const CheckoutProvider: FC<{ children?: ReactNode }> = (props) => {
-  const [state, dispatch] = useReducer(checkoutReducer, initialState)
+  const [state, dispatch] = useReducer(checkoutReducer, initialState);
 
   const setCardFields = useCallback(
     (card: CardFields) => dispatch({ type: 'SET_CARD_FIELDS', card }),
-    [dispatch]
-  )
+    [dispatch],
+  );
 
   const setAddressFields = useCallback(
-    (address: AddressFields) =>
-      dispatch({ type: 'SET_ADDRESS_FIELDS', address }),
-    [dispatch]
-  )
+    (address: AddressFields) => dispatch({ type: 'SET_ADDRESS_FIELDS', address }),
+    [dispatch],
+  );
 
   const clearCheckoutFields = useCallback(
     () => dispatch({ type: 'CLEAR_CHECKOUT_FIELDS' }),
-    [dispatch]
-  )
+    [dispatch],
+  );
 
-  const cardFields = useMemo(() => state.cardFields, [state.cardFields])
+  const cardFields = useMemo(() => state.cardFields, [state.cardFields]);
 
   const addressFields = useMemo(
     () => state.addressFields,
-    [state.addressFields]
-  )
+    [state.addressFields],
+  );
 
   const value = useMemo(
     () => ({
@@ -106,16 +105,16 @@ export const CheckoutProvider: FC<{ children?: ReactNode }> = (props) => {
       setCardFields,
       setAddressFields,
       clearCheckoutFields,
-    ]
-  )
+    ],
+  );
 
-  return <CheckoutContext.Provider value={value} {...props} />
-}
+  return <CheckoutContext.Provider value={value} {...props} />;
+};
 
 export const useCheckoutContext = () => {
-  const context = useContext<CheckoutContextType>(CheckoutContext)
+  const context = useContext<CheckoutContextType>(CheckoutContext);
   if (context === undefined) {
-    throw new Error(`useCheckoutContext must be used within a CheckoutProvider`)
+    throw new Error('useCheckoutContext must be used within a CheckoutProvider');
   }
-  return context
-}
+  return context;
+};

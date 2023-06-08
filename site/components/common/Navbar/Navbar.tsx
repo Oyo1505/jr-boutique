@@ -1,54 +1,66 @@
-import { FC } from 'react'
-import Link from 'next/link'
-import s from './Navbar.module.css'
-import NavbarRoot from './NavbarRoot'
-import { Logo, Container } from '@components/ui'
-import { Searchbar, UserNav } from '@components/common'
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { FC } from 'react';
+import Link from 'next/link';
+import { Container } from '@components/ui';
+import { UserNav } from '@components/common';
+import Image from 'next/image';
+import s from './Navbar.module.scss';
+import NavbarRoot from './NavbarRoot';
+import headerLogo from '../../../public/assets/images/header/Header.png';
 
-interface Link {
+interface ILink {
   href: string
   label: string
 }
 
 interface NavbarProps {
-  links?: Link[]
+  links?: ILink[]
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
-    <Container clean className="mx-auto max-w-8xl px-6">
-      <div className={s.nav}>
-        <div className="flex items-center flex-1">
-          <Link href="/" className={s.logo} aria-label="Logo">
-            <Logo />
-          </Link>
-          <nav className={s.navMenu}>
-            <Link href="/search" className={s.link}>
-              All
-            </Link>
-            {links?.map((l) => (
-              <Link href={l.href} key={l.href} className={s.link}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className="justify-center flex-1 hidden lg:flex">
-            <Searchbar />
-          </div>
-        )}
-        <div className="flex items-center justify-end flex-1 space-x-8">
-          <UserNav />
-        </div>
+    <Container className={s.container}>
+      <div>
+        <Link href='/' className={s.logo} aria-label='Logo'>
+          <Image src={headerLogo} alt='header-logo' />
+        </Link>
+        <nav className={s.navMenu}>
+          {links?.map((l: any, index: number) => (
+            <>
+              {index === links.length - 1 && (
+                <Link href={l.href} key={l.href} className={s.link}>
+                  {' '}
+                  {l.label}
+                </Link>
+              )}
+              {index !== links.length - 1 && (
+                <>
+                  {' '}
+                  <Link href={l.href} key={l.href} className={s.link}>
+                    {l.label}
+                    {' '}
+                  </Link>
+                  {' '}
+                  <span>/</span>
+                </>
+              )}
+            </>
+          ))}
+          {process.env.COMMERCE_SEARCH_ENABLED && (
+            <div className={s.searchBar}>loupe</div>
+          )}
+        </nav>
       </div>
-      {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="flex pb-4 lg:px-6 lg:hidden">
-          <Searchbar id="mobile-search" />
+      <div className={s.asideContainer}>
+        <div className={s.logoReseau}>
+          <a href='https://www.facebook.com/jrdistribution' />
+          <a href='https://www.instagram.com/jrdistribution.particuliers' />
         </div>
-      )}
+        <UserNav />
+      </div>
     </Container>
   </NavbarRoot>
-)
+);
 
-export default Navbar
+export default Navbar;

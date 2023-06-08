@@ -1,13 +1,13 @@
-import cn from 'clsx'
-import { useTheme } from 'next-themes'
-import { useRouter } from 'next/router'
-import { Moon, Sun } from '@components/icons'
-import s from './CustomerMenuContent.module.css'
-import useLogout from '@framework/auth/use-logout'
+import cn from 'clsx';
+import { useTheme } from 'next-themes';
+import { useRouter } from 'next/router';
+import { Moon, Sun } from '@components/icons';
+import useLogout from '@framework/auth/use-logout';
 import {
   DropdownContent,
   DropdownMenuItem,
-} from '@components/ui/Dropdown/Dropdown'
+} from '@components/ui/Dropdown/Dropdown';
+import s from './CustomerMenuContent.module.scss';
 
 const LINKS = [
   {
@@ -22,20 +22,20 @@ const LINKS = [
     name: 'My Cart',
     href: '/cart',
   },
-]
+];
 
 export default function CustomerMenuContent() {
-  const router = useRouter()
-  const logout = useLogout()
-  const { pathname } = useRouter()
-  const { theme, setTheme } = useTheme()
+  const router = useRouter();
+  const logout = useLogout();
+  const { pathname } = useRouter();
+  const { theme, setTheme } = useTheme();
 
   function handleClick(_: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    router.push(href)
+    router.push(href);
   }
 
   return (
-    <DropdownContent sideOffset={10} id="CustomerMenuContent">
+    <DropdownContent sideOffset={10} id='CustomerMenuContent'>
       {LINKS.map(({ name, href }) => (
         <DropdownMenuItem key={href}>
           <a
@@ -52,14 +52,17 @@ export default function CustomerMenuContent() {
         <a
           className={cn(s.link, 'justify-between')}
           onClick={() => {
-            setTheme(theme === 'dark' ? 'light' : 'dark')
+            setTheme(theme === 'dark' ? 'light' : 'dark');
           }}
         >
           <div>
-            Theme: <strong>{theme}</strong>{' '}
+            Theme:
+            {' '}
+            <strong>{theme}</strong>
+            {' '}
           </div>
-          <div className="ml-3">
-            {theme == 'dark' ? (
+          <div className='ml-3'>
+            {theme === 'dark' ? (
               <Moon width={20} height={20} />
             ) : (
               <Sun width={20} height={20} />
@@ -76,5 +79,5 @@ export default function CustomerMenuContent() {
         </a>
       </DropdownMenuItem>
     </DropdownContent>
-  )
+  );
 }

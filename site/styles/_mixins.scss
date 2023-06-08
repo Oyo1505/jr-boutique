@@ -1,0 +1,14 @@
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin etat($color) {
+  display: inline-block;
+  background-color: rgba($color, 0.2);
+  padding: 6px 18px;
+  border-radius: 10px;
+  color: $color;
+  font-family: rubik-regular;
+  font-size: $font-size-3;
+}

@@ -1,0 +1,33 @@
+.root {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  z-index: 50;
+  justify-content: center;
+  inset: 0;
+  background-color: rgba($color: $black, $alpha: 40%);
+  backdrop-filter: blur(0.8px);
+}
+
+.modal {
+  background-color: $white;
+  position: relative;
+  padding: 50px;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.close {
+  transition: ease-in-out;
+  transition-duration: 150;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 24px;
+
+  &:focus {
+    outline: none;
+  }
+}

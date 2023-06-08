@@ -1,5 +1,5 @@
-import cn from 'clsx'
-import s from './FeatureBar.module.css'
+import cn from 'clsx';
+import s from './FeatureBar.module.scss';
 
 interface FeatureBarProps {
   className?: string
@@ -23,17 +23,17 @@ const FeatureBar: React.FC<FeatureBarProps> = ({
       'translate-y-0 opacity-100': !hide,
       'translate-y-full opacity-0': hide,
     },
-    className
-  )
+    className,
+  );
   return (
     <div className={rootClassName}>
-      <span className="block md:inline">{title}</span>
-      <span className="block mb-6 md:inline md:mb-0 md:ml-2">
+      <span className='block md:inline'>{title}</span>
+      <span className='block mb-6 md:inline md:mb-0 md:ml-2'>
         {description}
       </span>
       {action && action}
     </div>
-  )
-}
+  );
+};
 
-export default FeatureBar
+export default FeatureBar;

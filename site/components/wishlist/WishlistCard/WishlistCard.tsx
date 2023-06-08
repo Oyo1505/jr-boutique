@@ -1,64 +1,64 @@
-import { FC, useState } from 'react'
-import cn from 'clsx'
-import Link from 'next/link'
-import Image from 'next/image'
-import s from './WishlistCard.module.css'
-import { Trash } from '@components/icons'
-import { Button, Text } from '@components/ui'
+// eslint-disable   @typescript-eslint/no-non-null-assertion
+import { FC, useState } from 'react';
+import cn from 'clsx';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Trash } from '@components/icons';
+import { Button, Text } from '@components/ui';
+import { useUI } from '@components/ui/context';
+import usePrice from '@framework/product/use-price';
+import useAddItem from '@framework/cart/use-add-item';
+import useRemoveItem from '@framework/wishlist/use-remove-item';
+import type { WishlistItem } from '@commerce/types/wishlist';
+import s from './WishlistCard.module.css';
 
-import { useUI } from '@components/ui/context'
-import type { Product } from '@commerce/types/product'
-import usePrice from '@framework/product/use-price'
-import useAddItem from '@framework/cart/use-add-item'
-import useRemoveItem from '@framework/wishlist/use-remove-item'
-import type { WishlistItem } from '@commerce/types/wishlist'
+const placeholderImg = '/product-img-placeholder.svg';
 
-const placeholderImg = '/product-img-placeholder.svg'
-
-const WishlistCard: React.FC<{
+const WishlistCard: FC<{
   item: WishlistItem
 }> = ({ item }) => {
-  const product: Product = item.product
+  const { product } = item;
 
   const { price } = usePrice({
     amount: product.price?.value,
     baseAmount: product.price?.retailPrice,
-    currencyCode: product.price?.currencyCode!,
-  })
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    currencyCode: product.price.currencyCode!,
+  });
   // @ts-ignore Wishlist is not always enabled
-  const removeItem = useRemoveItem({ wishlist: { includeProducts: true } })
-  const [loading, setLoading] = useState(false)
-  const [removing, setRemoving] = useState(false)
+  const removeItem = useRemoveItem({ wishlist: { includeProducts: true } });
+  const [loading, setLoading] = useState(false);
+  const [removing, setRemoving] = useState(false);
 
   // TODO: fix this missing argument issue
   /* @ts-ignore */
-  const addItem = useAddItem()
-  const { openSidebar } = useUI()
+  const addItem = useAddItem();
+  const { openSidebar } = useUI();
 
   const handleRemove = async () => {
-    setRemoving(true)
+    setRemoving(true);
 
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      await removeItem({ id: item.id! })
+      await removeItem({ id: item.id });
     } catch (error) {
-      setRemoving(false)
+      setRemoving(false);
     }
-  }
+  };
   const addToCart = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       await addItem({
         productId: String(product.id),
         variantId: String(product.variants[0].id),
-      })
-      openSidebar()
-      setLoading(false)
+      });
+      openSidebar();
+      setLoading(false);
     } catch (err) {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
@@ -72,19 +72,19 @@ const WishlistCard: React.FC<{
       </div>
 
       <div className={s.description}>
-        <div className="flex-1 mb-6">
-          <h3 className="text-2xl mb-2 -mt-1">
+        <div className='flex-1 mb-6'>
+          <h3 className='text-2xl mb-2 -mt-1'>
             <Link href={`/product${product.path}`}>{product.name}</Link>
           </h3>
-          <div className="mb-4">
+          <div className='mb-4'>
             <Text html={product.description} />
           </div>
         </div>
         <div>
           <Button
             width={260}
-            aria-label="Add to Cart"
-            type="button"
+            aria-label='Add to Cart'
+            type='button'
             onClick={addToCart}
             loading={loading}
           >
@@ -93,15 +93,15 @@ const WishlistCard: React.FC<{
         </div>
       </div>
       <div className={s.actions}>
-        <div className="flex justify-end font-bold">{price}</div>
-        <div className="flex justify-end mt-4 lg:mt-0">
-          <button onClick={handleRemove}>
+        <div className='flex justify-end font-bold'>{price}</div>
+        <div className='flex justify-end mt-4 lg:mt-0'>
+          <button type='button' onClick={handleRemove}>
             <Trash />
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WishlistCard
+export default WishlistCard;

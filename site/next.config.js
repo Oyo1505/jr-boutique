@@ -1,3 +1,4 @@
+const path = require('path')
 const commerce = require('./commerce.config.json')
 const { withCommerceConfig, getProviderName } = require('./commerce-config')
 
@@ -11,8 +12,12 @@ const isVendure = provider === '@vercel/commerce-vendure'
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
-    defaultLocale: 'en-US',
+    locales: ['fr-FR'],
+    defaultLocale: 'fr-FR',
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+    prependData: '@import "styles.scss";',
   },
   rewrites() {
     return [
@@ -34,11 +39,6 @@ module.exports = withCommerceConfig({
           destination: `${process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL}/:path*`,
         },
     ].filter(Boolean)
-  },
-
-  // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
-  experimental: {
-    esmExternals: 'loose',
   },
 })
 

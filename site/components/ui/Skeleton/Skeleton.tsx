@@ -1,11 +1,11 @@
-import React, { CSSProperties } from 'react'
-import cn from 'clsx'
-import px from '@lib/to-pixels'
-import s from './Skeleton.module.css'
+/* eslint-disable  no-param-reassign, no-unused-vars, no-undef */
+import React, { CSSProperties } from 'react';
+import cn from 'clsx';
+import px from '@lib/to-pixels';
+import s from './Skeleton.module.scss';
 
 interface SkeletonProps {
   show?: boolean
-  block?: boolean
   className?: string
   style?: CSSProperties
   width?: string | number
@@ -25,12 +25,12 @@ const Skeleton: React.FC<SkeletonProps> = ({
 }) => {
   // Automatically calculate the size if there are children
   // and no fixed sizes are specified
-  const shouldAutoSize = !!children && !(width || height)
+  const shouldAutoSize = !!children && !(width || height);
 
   // Defaults
-  width = width || 24
-  height = height || 24
-  boxHeight = boxHeight || height
+  width = width || 24;
+  height = height || 24;
+  boxHeight = boxHeight || height;
 
   return (
     <span
@@ -43,16 +43,16 @@ const Skeleton: React.FC<SkeletonProps> = ({
         shouldAutoSize
           ? {}
           : {
-              minWidth: px(width),
-              minHeight: px(height),
-              marginBottom: `calc(${px(boxHeight)} - ${px(height)})`,
-              ...style,
-            }
+            minWidth: px(width),
+            minHeight: px(height),
+            marginBottom: `calc(${px(boxHeight)} - ${px(height)})`,
+            ...style,
+          }
       }
     >
       {children}
     </span>
-  )
-}
+  );
+};
 
-export default Skeleton
+export default Skeleton;

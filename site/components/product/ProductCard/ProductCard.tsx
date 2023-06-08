@@ -1,12 +1,12 @@
-import { FC } from 'react'
-import cn from 'clsx'
-import Link from 'next/link'
-import type { Product } from '@commerce/types/product'
-import s from './ProductCard.module.css'
-import Image, { ImageProps } from 'next/image'
-import WishlistButton from '@components/wishlist/WishlistButton'
-import usePrice from '@framework/product/use-price'
-import ProductTag from '../ProductTag'
+import { FC } from 'react';
+import cn from 'clsx';
+import Link from 'next/link';
+import type { Product } from '@commerce/types/product';
+import Image, { ImageProps } from 'next/image';
+import WishlistButton from '@components/wishlist/WishlistButton';
+import usePrice from '@framework/product/use-price';
+import s from './ProductCard.module.scss';
+import ProductTag from '../ProductTag';
 
 interface Props {
   className?: string
@@ -16,7 +16,7 @@ interface Props {
   variant?: 'default' | 'slim' | 'simple'
 }
 
-const placeholderImg = '/product-img-placeholder.svg'
+const placeholderImg = '/product-img-placeholder.svg';
 
 const ProductCard: FC<Props> = ({
   product,
@@ -26,16 +26,17 @@ const ProductCard: FC<Props> = ({
   variant = 'default',
 }) => {
   const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
+    amount: product?.price?.value,
+    baseAmount: product?.price?.retailPrice,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion
+    currencyCode: product?.price?.currencyCode!,
+  });
 
   const rootClassName = cn(
     s.root,
     { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
-    className
-  )
+    className,
+  );
 
   return (
     <Link
@@ -50,7 +51,7 @@ const ProductCard: FC<Props> = ({
           </div>
           {product?.images && (
             <Image
-              quality="85"
+              quality='85'
               src={product.images[0]?.url || placeholderImg}
               alt={product.name || 'Product Image'}
               height={320}
@@ -88,7 +89,7 @@ const ProductCard: FC<Props> = ({
                 src={product.images[0]?.url || placeholderImg}
                 height={540}
                 width={540}
-                quality="85"
+                quality='85'
                 {...imgProps}
               />
             )}
@@ -117,7 +118,7 @@ const ProductCard: FC<Props> = ({
                 src={product.images[0]?.url || placeholderImg}
                 height={540}
                 width={540}
-                quality="85"
+                quality='85'
                 {...imgProps}
               />
             )}
@@ -125,7 +126,7 @@ const ProductCard: FC<Props> = ({
         </>
       )}
     </Link>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

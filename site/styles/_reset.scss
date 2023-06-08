@@ -1,0 +1,33 @@
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-family: rubik-regular;
+}
+
+input:autofill {
+  box-shadow: 0 0 0 1000px white inset;
+}
+
+a {
+  text-decoration: none;
+
+  &:link {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
+}
