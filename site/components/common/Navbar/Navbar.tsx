@@ -26,13 +26,26 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           <Image src={headerLogo} alt='header-logo' />
         </Link>
         <nav className={s.navMenu}>
-          {links?.map((l) => (
-            <Link href={l.href} key={l.href} className={s.link}>
-              {l.label}
-              {' '}
-              /
-              {' '}
-            </Link>
+          {links?.map((l: any, index: number) => (
+            <>
+              {index === links.length - 1 && (
+                <Link href={l.href} key={l.href} className={s.link}>
+                  {' '}
+                  {l.label}
+                </Link>
+              )}
+              {index !== links.length - 1 && (
+                <>
+                  {' '}
+                  <Link href={l.href} key={l.href} className={s.link}>
+                    {l.label}
+                    {' '}
+                  </Link>
+                  {' '}
+                  <span>/</span>
+                </>
+              )}
+            </>
           ))}
           {process.env.COMMERCE_SEARCH_ENABLED && (
             <div className={s.searchBar}>loupe</div>

@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path')
 
 module.exports = {
   env: {
@@ -24,11 +24,7 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@next/eslint-plugin-next',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@next/eslint-plugin-next', '@typescript-eslint'],
   settings: {
     react: {
       version: 'detect',
