@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   env: {
     browser: true,
@@ -14,7 +16,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    tsconfigRootDir: './',
+    tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
     ecmaFeatures: {
       jsx: true,
