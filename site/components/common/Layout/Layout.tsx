@@ -99,7 +99,7 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
   ) : null;
 };
 
-const Layout: React.FC<Props> = ({ children, pageProps: { ...pageProps } }) => {
+const Layout: React.FC<Props> = ({ children }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
   const { locale = 'en-US' } = useRouter();
   const categories = [
@@ -143,7 +143,7 @@ const Layout: React.FC<Props> = ({ children, pageProps: { ...pageProps } }) => {
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
         <main className='fit'>{children}</main>
-        <Footer pages={pageProps.pages} />
+        <Footer />
         <ModalUI />
         <CheckoutProvider>
           <SidebarUI links={navBarlinks} />
