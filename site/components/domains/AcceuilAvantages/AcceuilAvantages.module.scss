@@ -1,0 +1,48 @@
+.container{
+  width: $md-width;
+  margin: auto;
+
+  .title{
+    width: 500px;
+    margin: auto;
+    color: $red;
+    text-align: center;
+    background: url('../../../public/assets/images/page-acceuil/SurlignementAvantages.png') no-repeat;
+    height: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    .card{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+
+      img{
+        margin-bottom: 40px;
+      }
+
+      .containerCard{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: url('../../../public/assets/images/page-acceuil/CarréJaune.png');
+        width: 260px;
+        height: 271px;
+        padding: 0 30px 30px;
+      }
+    }
+  }
+
+  @include below-md{
+    width: 100%;
+  }
+}
