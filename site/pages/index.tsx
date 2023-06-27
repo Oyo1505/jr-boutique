@@ -4,7 +4,7 @@ import { ProductCard } from '@components/product';
 import { Grid } from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { AcceuilAvantages } from '@components/domains';
+import { AcceuilAvantages, Carrousel } from '@components/domains';
 
 export async function getStaticProps({
   preview,
@@ -42,6 +42,7 @@ export default function Home({
   return (
     <>
       <AcceuilAvantages />
+      <Carrousel />
       <Grid variant='filled'>
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard

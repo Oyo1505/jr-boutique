@@ -7,9 +7,10 @@
     margin: auto;
     color: $red;
     text-align: center;
-    background: url('../../../public/assets/images/page-acceuil/SurlignementAvantages.png') no-repeat;
+    background: url('../../../public/assets/images/page-acceuil/SurlignementAvantages.png') no-repeat center;
     height: 50px;
     margin-bottom: 50px;
+    font-size: $font-size-6;
   }
   
   .cards{
@@ -19,25 +20,43 @@
     gap: 50px;
 
     .card{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
+      text-align: center;
 
       img{
-        margin-bottom: 40px;
+        max-height: 150px;
+        margin-bottom: 15px;
+        align-self: center;
+        object-fit: contain;
       }
 
+
       .containerCard{
+        height: 271px;
+        width: 260px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 10px;
+        flex-direction: column;
         background: url('../../../public/assets/images/page-acceuil/CarréJaune.png');
-        width: 260px;
-        height: 271px;
         padding: 0 30px 30px;
+
+        .titleCard{
+          color: $red;
+          font-size: $font-size-6;
+          margin: 0;
+        }
+      }
+    }
+
+    .cardMiddle{
+      .containerCard {
+        margin-bottom: 0;
+       margin-top: -40px;
+      }
+   
+      img{
+        z-index: 99;
       }
     }
   }
