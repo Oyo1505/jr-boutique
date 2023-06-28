@@ -1,31 +1,53 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC } from 'react';
+import { Button } from '@components/ui';
 import Slider from 'react-slick';
 import styles from './carrousel.module.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const Carrousel: FC = ({ title }) => {
+interface Props {
+  title : string
+  products?:any
+}
+
+const Carrousel: FC<Props> = ({ title, products }) => {
   const settings = {
     dots: true,
+    dotsClass: styles.dots,
     arrows: false,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    draggable: false,
+    draggable: true,
     autoplay: true,
-    adaptiveHeight: true,
     autoplaySpeed: 6000,
   };
 
   return (
     <div className={styles.container}>
-      <div>
-        <h4>{title}</h4>
-      </div>
+
+      <h4 className={styles.title}>{title}</h4>
 
       <Slider {...settings}>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
+        {products && products?.map((product:any, index:number) => <div key={`${product?.name}-${index}`} className={styles.lastProducts}>
+          <div className={styles.imageProduct}>
+            <img src={product?.images?.[0].url} loading='lazy' alt={product?.images?.[0].altText} />
+          </div>
+          <div>
+            <div>{product?.name}</div>
+            <div>{product?.description}</div>
+            <div className={styles.value}>
+              <div>
+                {product?.price?.value}
+                {' '}
+                €
+              </div>
+              <Button>ajout</Button>
+            </div>
+          </div>
+        </div>)}
       </Slider>
     </div>);
 };

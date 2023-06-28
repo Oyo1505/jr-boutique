@@ -1,0 +1,75 @@
+.container{
+  width: $md-width;
+ // [class*="slick-slider"]{margin-top: 40px;}
+  [class*="slick-track"]{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .lastProducts{
+    .imageProduct{
+      
+    width: 215px;
+    height: 215px;
+    border : 2px $yellow solid;
+      img{
+        object-fit: contain;
+        width: 210px;
+        height: 210px;
+      }
+    }
+  }
+
+  .title{
+    font-size: $font-size-4;
+    color:$red;
+    text-align: center;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-image: url('../../..//public/assets/images/header/Separateur.png') 42;
+  }
+  .value{
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.dots {
+  left: 0;
+  right: 0;
+  top: -30px;
+  margin: auto;
+  position: absolute;
+  padding: 0;
+  text-align: center;
+}
+
+.dots li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 0;
+}
+
+.dots li button {
+  border: none;
+  background: $red;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  @include square(15px);
+  border-radius: 8px;
+  padding: 0;
+}
+
+

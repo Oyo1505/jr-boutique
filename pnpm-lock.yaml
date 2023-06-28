@@ -611,6 +611,7 @@ importers:
       '@types/node': ^18.0.3
       '@types/react': ^18.0.20
       '@types/react-dom': ^18.0.6
+      '@types/react-slick': ^0.23.10
       '@typescript-eslint/eslint-plugin': ^5.52.0
       '@typescript-eslint/parser': ^5.52.0
       '@vercel/commerce': workspace:*
@@ -654,6 +655,7 @@ importers:
       run: ^1.4.0
       sass: ^1.58.3
       sharp: ^0.31.3
+      slick-carousel: ^1.8.1
       stylelint: ^15.1.0
       stylelint-config-standard-scss: ^7.0.1
       stylelint-scss: ^4.4.0
@@ -688,6 +690,7 @@ importers:
       react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
       run: 1.4.0
       sharp: 0.31.3
+      slick-carousel: 1.8.1
       tabbable: 5.3.3
     devDependencies:
       '@next/bundle-analyzer': 12.3.0
@@ -699,6 +702,7 @@ importers:
       '@types/node': 18.7.18
       '@types/react': 18.0.20
       '@types/react-dom': 18.0.6
+      '@types/react-slick': 0.23.10
       '@typescript-eslint/eslint-plugin': 5.52.0_xxfervl4khclrtckr7d45zaiqy
       '@typescript-eslint/parser': 5.52.0_4brgkhw6cq4me3drk3kxrpb2mm
       deepmerge: 4.2.2
@@ -3532,6 +3536,12 @@ packages:
 
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
+    dependencies:
+      '@types/react': 18.0.20
+    dev: true
+
+  /@types/react-slick/0.23.10:
+    resolution: {integrity: sha512-ZiqdencANDZy6sWOWJ54LDvebuXFEhDlHtXU9FFipQR2BcYU2QJxZhvJPW6YK7cocibUiNn+YvDTbt1HtCIBVA==}
     dependencies:
       '@types/react': 18.0.20
     dev: true
@@ -9770,6 +9780,12 @@ packages:
       ansi-styles: 6.1.1
       is-fullwidth-code-point: 4.0.0
     dev: true
+
+  /slick-carousel/1.8.1:
+    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
+    peerDependencies:
+      jquery: '>=1.8.0'
+    dev: false
 
   /smart-buffer/4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}

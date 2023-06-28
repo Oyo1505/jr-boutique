@@ -44,6 +44,7 @@
     "react-use-measure": "^2.1.1",
     "run": "^1.4.0",
     "sharp": "^0.31.3",
+    "slick-carousel": "^1.8.1",
     "tabbable": "^5.2.1"
   },
   "devDependencies": {
@@ -56,6 +57,7 @@
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "deepmerge": "^4.2.2",
