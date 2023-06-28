@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { Button } from '@components/ui';
 import Slider from 'react-slick';
-import styles from './carrousel.module.scss';
+import styles from './Carrousel.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
