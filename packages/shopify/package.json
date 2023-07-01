@@ -8,7 +8,8 @@
     "dev": "taskr",
     "types": "tsc --emitDeclarationOnly",
     "prettier-fix": "prettier --write .",
-    "generate": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config"
+    "generate": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config",
+    "generate:windows": "set DOTENV_CONFIG_PATH=./.env && graphql-codegen -r && dotenv/config"
   },
   "sideEffects": false,
   "type": "module",
