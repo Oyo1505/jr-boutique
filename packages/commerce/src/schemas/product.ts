@@ -32,6 +32,14 @@ export const productVariantSchema = z.object({
   image: productImageSchema.optional(),
 })
 
+export const allProductVariantSchema = z.object({
+  id: z.string(),
+  sku: z.string().nullish(),
+  displayName: z.string().optional(),
+  title: z.string().optional(),
+  availableForSale : z.boolean().optional()
+})
+
 export const productSchema = z.object({
   id: z.string(),
   name: z.string(),

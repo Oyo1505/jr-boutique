@@ -7131,6 +7131,13 @@ export type GetAllProductsQuery = {
             currencyCode: CurrencyCode
           }
         }
+        variants: {
+            id: string
+            title: string
+            sku :string
+            availableForSale :boolean
+						displayName: string
+        }
         images: {
           __typename?: 'ImageConnection'
           pageInfo: {
