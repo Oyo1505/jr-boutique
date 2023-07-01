@@ -14,7 +14,7 @@ directive @accessRestricted(
 ) on FIELD_DEFINITION | OBJECT
 
 """
-Contextualizes data based on the additional information provided by the directive. For example, you can use the `@inContext(country: CA)` directive to [query a product's price](https://shopify.dev/api/examples/international-pricing#query-product-prices) in a storefront within the context of Canada.
+Contextualizes data based on the additional information provided by the directive. For example, you can use the `@inContext(country: CA)` directive to [query a product's price](https://shopify.dev/custom-storefronts/internationalization/international-pricing) in a storefront within the context of Canada.
 """
 directive @inContext(
   """
@@ -32,6 +32,11 @@ directive @inContext(
   """
   preferredLocationId: ID
 ) on MUTATION | QUERY
+
+"""
+Requires that exactly one field must be supplied and that field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
 
 "A version of the API, as defined by [Shopify API versioning](https://shopify.dev/api/usage/versioning).\nVersions are commonly referred to by their handle (for example, `2021-10`).\n"
 type ApiVersion {
@@ -76,7 +81,7 @@ type AppliedGiftCard implements Node {
   balanceV2: MoneyV2!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -174,7 +179,7 @@ type Article implements HasMetafields & Node & OnlineStorePublishable {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -347,7 +352,7 @@ type Attribute {
 }
 
 """
-Specifies the input fields required for an attribute.
+The input fields for an attribute.
 """
 input AttributeInput {
   """
@@ -463,7 +468,7 @@ type Blog implements HasMetafields & Node & OnlineStorePublishable {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -595,9 +600,7 @@ enum CardBrand {
   VISA
 }
 
-"""
-A cart represents the merchandise that a buyer intends to purchase, and the estimated cost associated with the cart. To learn how to interact with a cart during a customer's session, refer to [Manage a cart with the Storefront API](https://shopify.dev/api/examples/cart).
-"""
+"A cart represents the merchandise that a buyer intends to purchase,\nand the estimated cost associated with the cart. Learn how to\n[interact with a cart](https://shopify.dev/custom-storefronts/internationalization/international-pricing)\nduring a customer's session.\n"
 type Cart implements Node {
   """
   An attribute associated with the cart.
@@ -625,7 +628,7 @@ type Cart implements Node {
   checkoutUrl: URL!
 
   """
-  The estimated costs that the buyer will pay at checkout. The costs are subject to change and changes will be reflected at checkout. The `cost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).
+  The estimated costs that the buyer will pay at checkout. The costs are subject to change and changes will be reflected at checkout. The `cost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).
   """
   cost: CartCost!
 
@@ -672,13 +675,11 @@ type Cart implements Node {
   "The case-insensitive discount codes that the customer added at checkout.\n"
   discountCodes: [CartDiscountCode!]!
 
-  """
-  The estimated costs that the buyer will pay at checkout. The estimated costs are subject to change and changes will be reflected at checkout. The `estimatedCost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).
-  """
+  "The estimated costs that the buyer will pay at checkout.\nThe estimated costs are subject to change and changes will be reflected at checkout.\nThe `estimatedCost` field uses the `buyerIdentity` field to determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).\n"
   estimatedCost: CartEstimatedCost! @deprecated(reason: "Use `cost` instead.")
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -783,7 +784,7 @@ type CartBuyerIdentity {
   phone: String
 }
 
-"Specifies the input fields to update the buyer information associated with a cart.\nBuyer identity is used to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-checkout)\nand should match the customer's shipping address.\n"
+"Specifies the input fields to update the buyer information associated with a cart.\nBuyer identity is used to determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing)\nand should match the customer's shipping address.\n"
 input CartBuyerIdentityInput {
   """
   The country where the buyer is located.
@@ -836,7 +837,7 @@ type CartCodeDiscountAllocation implements CartDiscountAllocation {
   discountedAmount: MoneyV2!
 }
 
-"The costs that the buyer will pay at checkout.\nIt uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).\n"
+"The costs that the buyer will pay at checkout.\nThe cart cost uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).\n"
 type CartCost {
   """
   The estimated amount, before taxes and discounts, for the customer to pay at checkout. The checkout charge amount doesn't include any deferred payments that'll be paid at a later date. If the cart has no deferred payments, then the checkout charge amount is equivalent to `subtotalAmount`.
@@ -1095,7 +1096,7 @@ enum CartErrorCode {
   MISSING_NOTE
 }
 
-"The estimated costs that the buyer will pay at checkout.\nIt uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).\n"
+"The estimated costs that the buyer will pay at checkout.\nThe estimated cost uses\n[`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity)\nto determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).\n"
 type CartEstimatedCost {
   """
   The estimated amount, before taxes and discounts, for the customer to pay at checkout. The checkout charge amount doesn't include any deferred payments that'll be paid at a later date. If the cart has no deferred payments, then the checkout charge amount is equivalent to`subtotal_amount`.
@@ -1124,7 +1125,7 @@ type CartEstimatedCost {
 }
 
 """
-Specifies the input fields to create a cart.
+The input fields to create a cart.
 """
 input CartInput {
   """
@@ -1132,9 +1133,7 @@ input CartInput {
   """
   attributes: [AttributeInput!]
 
-  """
-  The customer associated with the cart. Used to determine [international pricing](https://shopify.dev/api/examples/international-pricing#create-a-checkout). Buyer identity should match the customer's shipping address.
-  """
+  "The customer associated with the cart. Used to determine [international pricing]\n(https://shopify.dev/custom-storefronts/internationalization/international-pricing).\nBuyer identity should match the customer's shipping address.\n"
   buyerIdentity: CartBuyerIdentityInput
 
   "The case-insensitive discount codes that the customer added at checkout.\n"
@@ -1187,7 +1186,7 @@ type CartLine implements Node {
     @deprecated(reason: "Use `cost` instead.")
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -1289,7 +1288,7 @@ type CartLineEstimatedCost {
 }
 
 """
-Specifies the input fields to create a merchandise line on a cart.
+The input fields to create a merchandise line on a cart.
 """
 input CartLineInput {
   """
@@ -1298,7 +1297,7 @@ input CartLineInput {
   attributes: [AttributeInput!]
 
   """
-  The identifier of the merchandise that the buyer intends to purchase.
+  The ID of the merchandise that the buyer intends to purchase.
   """
   merchandiseId: ID!
 
@@ -1308,13 +1307,13 @@ input CartLineInput {
   quantity: Int = 1
 
   """
-  The identifier of the selling plan that the merchandise is being purchased with.
+  The ID of the selling plan that the merchandise is being purchased with.
   """
   sellingPlanId: ID
 }
 
 """
-Specifies the input fields to update a line item on a cart.
+The input fields to update a line item on a cart.
 """
 input CartLineUpdateInput {
   """
@@ -1323,12 +1322,12 @@ input CartLineUpdateInput {
   attributes: [AttributeInput!]
 
   """
-  The identifier of the merchandise line.
+  The ID of the merchandise line.
   """
   id: ID!
 
   """
-  The identifier of the merchandise for the line item.
+  The ID of the merchandise for the line item.
   """
   merchandiseId: ID
 
@@ -1338,7 +1337,7 @@ input CartLineUpdateInput {
   quantity: Int
 
   """
-  The identifier of the selling plan that the merchandise is being purchased with.
+  The ID of the selling plan that the merchandise is being purchased with.
   """
   sellingPlanId: ID
 }
@@ -1496,7 +1495,7 @@ type Checkout implements Node {
   email: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -1638,7 +1637,7 @@ type Checkout implements Node {
 }
 
 """
-Specifies the fields required to update a checkout's attributes.
+The input fields required to update a checkout's attributes.
 """
 input CheckoutAttributesUpdateV2Input {
   "Allows setting partial addresses on a Checkout, skipping the full validation of attributes.\nThe required attributes are city, province, and country.\nFull validation of the addresses is still done at completion time. Defaults to `false` with \neach operation.\n"
@@ -1687,7 +1686,7 @@ type CheckoutBuyerIdentity {
 }
 
 """
-Specifies the identity of the customer associated with the checkout.
+The input fields for the identity of the customer associated with the checkout.
 """
 input CheckoutBuyerIdentityInput {
   "The country code of one of the shop's\n[enabled countries](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency/setup).\nFor example, `CA`. Including this field creates a checkout in the specified country's currency.\n"
@@ -1768,7 +1767,7 @@ type CheckoutCompleteWithTokenizedPaymentV3Payload {
 }
 
 """
-Specifies the fields required to create a checkout.
+The input fields required to create a checkout.
 """
 input CheckoutCreateInput {
   "Allows setting partial addresses on a Checkout, skipping the full validation of attributes.\nThe required attributes are city, province, and country.\nFull validation of addresses is still done at completion time. Defaults to `null`.\n"
@@ -1974,6 +1973,11 @@ enum CheckoutErrorCode {
   Discount already applied.
   """
   DISCOUNT_ALREADY_APPLIED
+
+  """
+  Discount code isn't working right now. Please contact us for help.
+  """
+  DISCOUNT_CODE_APPLICATION_FAILED
 
   """
   Discount disabled.
@@ -2223,7 +2227,7 @@ type CheckoutLineItem implements Node {
   discountAllocations: [DiscountAllocation!]!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -2280,7 +2284,7 @@ type CheckoutLineItemEdge {
 }
 
 """
-Specifies the input fields to create a line item on a checkout.
+The input fields to create a line item on a checkout.
 """
 input CheckoutLineItemInput {
   """
@@ -2294,13 +2298,13 @@ input CheckoutLineItemInput {
   quantity: Int!
 
   """
-  The identifier of the product variant for the line item.
+  The ID of the product variant for the line item.
   """
   variantId: ID!
 }
 
 """
-Specifies the input fields to update a line item on the checkout.
+The input fields to update a line item on the checkout.
 """
 input CheckoutLineItemUpdateInput {
   """
@@ -2309,7 +2313,7 @@ input CheckoutLineItemUpdateInput {
   customAttributes: [AttributeInput!]
 
   """
-  The identifier of the line item.
+  The ID of the line item.
   """
   id: ID
 
@@ -2319,7 +2323,7 @@ input CheckoutLineItemUpdateInput {
   quantity: Int
 
   """
-  The variant identifier of the line item.
+  The variant ID of the line item.
   """
   variantId: ID
 }
@@ -2487,7 +2491,7 @@ type Collection implements HasMetafields & Node & OnlineStorePublishable {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -2659,7 +2663,7 @@ type Comment implements Node {
   contentHtml: HTML!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 }
@@ -4973,7 +4977,7 @@ type Customer implements HasMetafields {
   firstName: String
 
   """
-  A unique identifier for the customer.
+  A unique ID for the customer.
   """
   id: ID!
 
@@ -5078,7 +5082,7 @@ type CustomerAccessToken {
 }
 
 """
-Specifies the input fields required to create a customer access token.
+The input fields required to create a customer access token.
 """
 input CustomerAccessTokenCreateInput {
   """
@@ -5184,7 +5188,7 @@ type CustomerActivateByUrlPayload {
 }
 
 """
-Specifies the input fields required to activate a customer.
+The input fields to activate a customer.
 """
 input CustomerActivateInput {
   """
@@ -5288,7 +5292,7 @@ type CustomerAddressUpdatePayload {
 }
 
 """
-The fields required to create a new customer.
+The input fields to create a new customer.
 """
 input CustomerCreateInput {
   """
@@ -5485,7 +5489,7 @@ type CustomerResetByUrlPayload {
 }
 
 """
-Specifies the fields required to reset a customer’s password.
+The input fields to reset a customer's password.
 """
 input CustomerResetInput {
   """
@@ -5526,7 +5530,7 @@ type CustomerResetPayload {
 }
 
 """
-Specifies the fields required to update the Customer information.
+The input fields to update the Customer information.
 """
 input CustomerUpdateInput {
   """
@@ -5879,7 +5883,7 @@ type ExternalVideo implements Media & Node {
   host: MediaHost!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -5924,7 +5928,7 @@ type Filter {
   values: [FilterValue!]!
 }
 
-"The type of data that the filter group represents.\n\nFor more information, refer to [Filter products in a collection with the Storefront API]\n(https://shopify.dev/api/examples/filter-products).\n"
+"The type of data that the filter group represents.\n\nFor more information, refer to [Filter products in a collection with the Storefront API]\n(https://shopify.dev/custom-storefronts/products-collections/filter-products).\n"
 enum FilterType {
   """
   A boolean value.
@@ -6084,7 +6088,7 @@ type GenericFile implements Node {
   alt: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -6110,7 +6114,7 @@ type GenericFile implements Node {
 }
 
 """
-Used to specify a geographical location.
+The input fields used to specify a geographical location.
 """
 input GeoCoordinateInput {
   """
@@ -6124,7 +6128,7 @@ input GeoCoordinateInput {
   longitude: Float!
 }
 
-"A string containing HTML code. Refer to the [HTML spec](https://html.spec.whatwg.org/#elements-3) for a\ncomplete list of HTML elements.\n\nExample value: `\"<p>Grey cotton knit sweater.</p>\"`.\n"
+"A string containing HTML code. Refer to the [HTML spec](https://html.spec.whatwg.org/#elements-3) for a\ncomplete list of HTML elements.\n\nExample value: `\"<p>Grey cotton knit sweater.</p>\"`\n"
 scalar HTML
 
 """
@@ -6156,7 +6160,7 @@ interface HasMetafields {
 }
 
 """
-Identifies a metafield on an owner resource by namespace and key.
+The input fields to identify a metafield on an owner resource by namespace and key.
 """
 input HasMetafieldsIdentifier {
   """
@@ -6185,7 +6189,7 @@ type Image {
   height: Int
 
   """
-  A unique identifier for the image.
+  A unique ID for the image.
   """
   id: ID
 
@@ -7056,7 +7060,7 @@ type Location implements Node {
   address: LocationAddress!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7236,7 +7240,7 @@ type MailingAddress implements Node {
   formattedArea: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7307,7 +7311,7 @@ type MailingAddressEdge {
 }
 
 """
-Specifies the fields accepted to create or update a mailing address.
+The input fields to create or update a mailing address.
 """
 input MailingAddressInput {
   "The first line of the address. Typically the street address or PO Box number.\n"
@@ -7485,7 +7489,7 @@ type MediaImage implements Media & Node {
   alt: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7505,7 +7509,7 @@ type MediaImage implements Media & Node {
   previewImage: Image
 }
 
-"A menu used for navigation within a storefront.\n"
+"A [navigation menu](https://help.shopify.com/manual/online-store/menus-and-links) representing a hierarchy\nof hyperlinks (items).\n"
 type Menu implements Node {
   """
   The menu's handle.
@@ -7513,7 +7517,7 @@ type Menu implements Node {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7536,7 +7540,7 @@ type Menu implements Node {
 "A menu item within a parent menu.\n"
 type MenuItem implements Node {
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7649,40 +7653,40 @@ type Metafield implements Node {
   description: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
   """
-  The key name for a metafield.
+  The unique identifier for the metafield within its namespace.
   """
   key: String!
 
   """
-  The namespace for a metafield.
+  The container for a group of metafields that the metafield is associated with.
   """
   namespace: String!
 
   """
-  The parent object that the metafield belongs to.
+  The type of resource that the metafield is attached to.
   """
   parentResource: MetafieldParentResource!
 
   """
-  Returns a reference object if the metafield definition's type is a resource reference.
+  Returns a reference object if the metafield's type is a resource reference.
   """
   reference: MetafieldReference
 
-  "The type name of the metafield.\nSee the list of [supported types](https://shopify.dev/apps/metafields/definitions/types).\n"
+  "The type name of the metafield.\nRefer to the list of [supported types](https://shopify.dev/apps/metafields/definitions/types).\n"
   type: String!
 
   """
-  The date and time when the storefront metafield was updated.
+  The date and time when the metafield was last updated.
   """
   updatedAt: DateTime!
 
   """
-  The value of a metafield.
+  The data stored in the metafield. Always stored as a string, regardless of the metafield's type.
   """
   value: String!
 }
@@ -7738,7 +7742,7 @@ type Model3d implements Media & Node {
   alt: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -7789,7 +7793,7 @@ A monetary value string without a currency symbol or code. Example value: `"100.
 scalar Money
 
 """
-Specifies the fields for a monetary value with currency.
+The input fields for a monetary value with currency.
 """
 input MoneyInput {
   """
@@ -7835,11 +7839,9 @@ type Mutation {
     cartId: ID!
   ): CartAttributesUpdatePayload
 
-  "Updates customer information associated with a cart.\nBuyer identity is used to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-checkout)\nand should match the customer's shipping address.\n"
+  "Updates customer information associated with a cart.\nBuyer identity is used to determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing)\nand should match the customer's shipping address.\n"
   cartBuyerIdentityUpdate(
-    """
-    The customer associated with the cart. Used to determine [international pricing](https://shopify.dev/api/examples/international-pricing#create-a-checkout). Buyer identity should match the customer's shipping address.
-    """
+    "The customer associated with the cart. Used to determine\n[international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).\nBuyer identity should match the customer's shipping address.\n"
     buyerIdentity: CartBuyerIdentityInput!
 
     """
@@ -8325,7 +8327,7 @@ type Mutation {
     customerAccessToken: String!
   ): CustomerDefaultAddressUpdatePayload
 
-  "\"Sends a reset password email to the customer. The reset password email contains a reset password URL and token that you can pass to the [`customerResetByUrl`](https://shopify.dev/api/storefront/latest/mutations/customerResetByUrl) or [`customerReset`](https://shopify.dev/api/storefront/latest/mutations/customerReset) mutation to reset the customer password.\"\n"
+  "Sends a reset password email to the customer. The reset password\nemail contains a reset password URL and token that you can pass to\nthe [`customerResetByUrl`](https://shopify.dev/api/storefront/latest/mutations/customerResetByUrl) or\n[`customerReset`](https://shopify.dev/api/storefront/latest/mutations/customerReset) mutation to reset the\ncustomer password.\n\nThis mutation is throttled by IP. With authenticated access,\nyou can provide a [`Shopify-Storefront-Buyer-IP`](https://shopify.dev/api/usage/authentication#optional-ip-header) instead of the request IP.\n\nMake sure that the value provided to `Shopify-Storefront-Buyer-IP` is trusted. Unthrottled access to this\nmutation presents a security risk.\n"
   customerRecover(
     """
     The email address of the customer to recover.
@@ -8378,7 +8380,7 @@ type Mutation {
 "An object with an ID field to support global identification, in accordance with the\n[Relay specification](https://relay.dev/graphql/objectidentification.htm#sec-Node-Interface).\nThis interface is used by the [node](https://shopify.dev/api/admin-graphql/unstable/queries/node)\nand [nodes](https://shopify.dev/api/admin-graphql/unstable/queries/nodes) queries.\n"
 interface Node {
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 }
@@ -8493,7 +8495,7 @@ type Order implements HasMetafields & Node {
   fulfillmentStatus: OrderFulfillmentStatus!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -8926,7 +8928,7 @@ type Page implements HasMetafields & Node & OnlineStorePublishable {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -9005,7 +9007,7 @@ type PageEdge {
   node: Page!
 }
 
-"Returns information about pagination in a connection, in accordance with the\n[Relay specification](https://relay.dev/graphql/connections.htm#sec-undefined.PageInfo).\n"
+"Returns information about pagination in a connection, in accordance with the\n[Relay specification](https://relay.dev/graphql/connections.htm#sec-undefined.PageInfo).\nFor more information, please read our [GraphQL Pagination Usage Guide](https://shopify.dev/api/usage/pagination-graphql).\n"
 type PageInfo {
   """
   The cursor corresponding to the last node in edges.
@@ -9086,7 +9088,7 @@ type Payment implements Node {
   errorMessage: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -9144,7 +9146,7 @@ type PaymentSettings {
   enabledPresentmentCurrencies: [CurrencyCode!]!
 
   """
-  The shop’s Shopify Payments account id.
+  The shop’s Shopify Payments account ID.
   """
   shopifyPaymentsAccountId: String
 
@@ -9184,9 +9186,7 @@ enum PaymentTokenType {
   VAULT
 }
 
-"""
-A filter used to view a subset of products in a collection matching a specific price range.
-"""
+"The input fields for a filter used to view a subset of products in a collection matching a specific price range.\n"
 input PriceRangeFilter {
   """
   The maximum price in the range. Empty indicates no max price.
@@ -9286,7 +9286,7 @@ type Product implements HasMetafields & Node & OnlineStorePublishable {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -9597,9 +9597,7 @@ type ProductEdge {
   node: Product!
 }
 
-"""
-A filter used to view a subset of products in a collection.
-"""
+"The input fields for a filter used to view a subset of products in a collection.\nBy default, the `available` and `price` filters are enabled. Filters are customized with the Shopify Search & Discovery app.\nLearn more about [customizing storefront filtering](https://help.shopify.com/manual/online-store/themes/customizing-themes/storefront-filters).\n"
 input ProductFilter {
   """
   Filter on if the product is available for sale.
@@ -9681,7 +9679,7 @@ enum ProductMediaSortKeys {
 "Product property names like \"Size\", \"Color\", and \"Material\" that the customers can select.\nVariants are selected based on permutations of these options.\n255 characters limit each.\n"
 type ProductOption implements Node {
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -9789,7 +9787,7 @@ type ProductVariant implements HasMetafields & Node {
   currentlyNotInStock: Boolean!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -10104,9 +10102,7 @@ type QueryRoot {
     sortKey: BlogSortKeys = ID
   ): BlogConnection!
 
-  """
-  Retrieve a cart by its ID. For more information, refer to [Manage a cart with the Storefront API](https://shopify.dev/api/examples/cart).
-  """
+  "Retrieve a cart by its ID. For more information, refer to\n[Manage a cart with the Storefront API](https://shopify.dev/custom-storefronts/cart/manage).\n"
   cart(
     """
     The ID of the cart.
@@ -10177,9 +10173,7 @@ type QueryRoot {
     sortKey: CollectionSortKeys = ID
   ): CollectionConnection!
 
-  """
-  Find a customer by its access token.
-  """
+  "The customer associated with the given access token. Tokens are obtained by using the\n[`customerAccessTokenCreate` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/customerAccessTokenCreate).\n"
   customer(
     """
     The customer access token.
@@ -10230,12 +10224,10 @@ type QueryRoot {
     sortKey: LocationSortKeys = ID
   ): LocationConnection!
 
-  """
-  A storefront menu.
-  """
+  "Retrieve a [navigation menu](https://help.shopify.com/manual/online-store/menus-and-links) by its handle.\n"
   menu(
     """
-    Returns a storefront menu by the specified handle.
+    The navigation menu's handle.
     """
     handle: String!
   ): Menu
@@ -10510,7 +10502,7 @@ type SelectedOption {
 }
 
 """
-Specifies the input fields required for a selected option.
+The input fields required for a selected option.
 """
 input SelectedOptionInput {
   """
@@ -10539,7 +10531,7 @@ type SellingPlan {
   description: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -10924,7 +10916,7 @@ type Shop implements HasMetafields & Node {
   description: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -11017,7 +11009,7 @@ type ShopPolicy implements Node {
   handle: String!
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
@@ -11045,7 +11037,7 @@ type ShopPolicyWithDefault {
   handle: String!
 
   """
-  The unique identifier of the policy. A default policy doesn't have an ID.
+  The unique ID of the policy. A default policy doesn't have an ID.
   """
   id: ID
 
@@ -11458,9 +11450,7 @@ type UserError implements DisplayableError {
   message: String!
 }
 
-"""
-A filter used to view a subset of products in a collection matching a specific variant option.
-"""
+"The input fields for a filter used to view a subset of products in a collection matching a specific variant option.\n"
 input VariantOptionFilter {
   """
   The name of the variant option to filter on.
@@ -11483,7 +11473,7 @@ type Video implements Media & Node {
   alt: String
 
   """
-  A globally-unique identifier.
+  A globally-unique ID.
   """
   id: ID!
 
