@@ -6,8 +6,6 @@ const provider = commerce.provider || getProviderName();
 
 const isShopify = provider === '@vercel/commerce-shopify';
 
-console.log(isShopify);
-
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
