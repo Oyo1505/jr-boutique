@@ -26,7 +26,20 @@ export const productConnectionFragment = /* GraphQL */ `
             }
           }
         }
-
+        images(first: 1) {
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+          }
+          edges {
+            node {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
       }
     }
   }
