@@ -4,7 +4,8 @@ import { Layout } from '@components/common';
 // import { Grid } from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { AcceuilAvantages, Carrousel } from '@components/domains';
+import { AcceuilAvantages, Carrousel } from '@components/pageAccueuil';
+
 import styles from './index.module.scss';
 
 export async function getStaticProps({
@@ -14,19 +15,21 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = { locale, locales };
   const bestSellingProductsPromise = commerce.getAllProducts({
-    variables: { limit: 12, sortKey: 'BEST_SELLING' },
+    variables: { first: 12, relevance: 'best_selling' },
     config,
     preview,
-    // Saleor provider only
-    ...({ featured: true } as any),
   });
   const newProductsPromise = commerce.getAllProducts({
-    variables: { first: 12 },
+    variables: { first: 12, relevance: 'newest' },
     config,
     preview,
-    // Saleor provider only
-    ...({ featured: true } as any),
   });
+  // const test = getAllCollections({
+  //   variables: { first: 1 },
+  //   config,
+  //   preview,
+  // });
+
   const pagesPromise = commerce.getAllPages({ config, preview });
   const siteInfoPromise = commerce.getSiteInfo({ config, preview });
   const { products } = await bestSellingProductsPromise;
@@ -41,6 +44,7 @@ export async function getStaticProps({
       categories,
       brands,
       pages,
+
     },
     revalidate: 60,
   };

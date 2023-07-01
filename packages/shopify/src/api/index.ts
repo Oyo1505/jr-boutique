@@ -19,6 +19,7 @@ import getAllProducts from './operations/get-all-products'
 import getAllProductPaths from './operations/get-all-product-paths'
 import getProduct from './operations/get-product'
 import getSiteInfo from './operations/get-site-info'
+import getAllCollections from './operations/get-all-collections'
 import login from './operations/login'
 
 if (!API_URL) {
@@ -50,6 +51,7 @@ export const provider = {
   operations: {
     login,
     getSiteInfo,
+    getAllCollections,
     getAllPages,
     getPage,
     getAllProducts,

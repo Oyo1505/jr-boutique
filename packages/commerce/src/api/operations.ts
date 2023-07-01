@@ -8,6 +8,7 @@ import type {
   GetProductOperation,
 } from '../types/product'
 import type { APIProvider, CommerceAPI } from '.'
+import { GetAllCollectionOperation } from '../types/collections'
 
 const noop = () => {
   throw new Error('Not implemented')
@@ -131,6 +132,22 @@ export type Operations<P extends APIProvider> = {
 
   getAllProducts: {
     <T extends GetAllProductsOperation>(opts: {
+      variables?: T['variables']
+      config?: P['config']
+      preview?: boolean
+    }): Promise<T['data']>
+
+    <T extends GetAllProductsOperation>(
+      opts: {
+        variables?: T['variables']
+        config?: P['config']
+        preview?: boolean
+      } & OperationOptions
+    ): Promise<T['data']>
+  }
+
+  getAllCollections: {
+    <T extends GetAllCollectionOperation>(opts: {
       variables?: T['variables']
       config?: P['config']
       preview?: boolean

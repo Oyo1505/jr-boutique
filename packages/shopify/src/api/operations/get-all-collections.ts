@@ -2,26 +2,24 @@ import type {
   OperationContext,
   OperationOptions,
 } from '@vercel/commerce/api/operations'
-import { GetAllProductsOperation } from '@vercel/commerce/types/product'
-import {
-  GetAllProductsQuery,
-  GetAllProductsQueryVariables,
-  Product as ShopifyProduct,
-} from '../../../schema'
-import type { ShopifyConfig, Provider } from '..'
-import getAllProductsQuery from '../../utils/queries/get-all-products-query'
-import { normalizeProduct } from '../../utils'
+import  getSiteCollectionsQuery  from '../../utils/queries/get-all-collections-query'
 
-export default function getAllProductsOperation({
+import { GetAllProductsOperation } from '@vercel/commerce/types/product'
+import { Provider, ShopifyConfig } from '..'
+
+
+
+
+export default function getAllCollectionsOperation({
   commerce,
 }: OperationContext<Provider>) {
-  async function getAllProducts<T extends GetAllProductsOperation>(opts?: {
+  async function getAllCollections<T extends GetAllProductsOperation>(opts?: {
     variables?: T['variables']
     config?: Partial<ShopifyConfig>
     preview?: boolean
   }): Promise<T['data']>
 
-  async function getAllProducts<T extends GetAllProductsOperation>(
+  async function getAllCollections<T extends GetAllProductsOperation>(
     opts: {
       variables?: T['variables']
       config?: Partial<ShopifyConfig>
@@ -29,8 +27,8 @@ export default function getAllProductsOperation({
     } & OperationOptions
   ): Promise<T['data']>
 
-  async function getAllProducts<T extends GetAllProductsOperation>({
-    query = getAllProductsQuery,
+  async function getAllCollections<T extends GetAllProductsOperation>({
+    query = getSiteCollectionsQuery,
     variables,
     config,
   }: {
@@ -42,8 +40,7 @@ export default function getAllProductsOperation({
     const { fetch, locale } = commerce.getConfig(config)
 
     const { data } = await fetch<
-      GetAllProductsQuery,
-      GetAllProductsQueryVariables
+      any
     >(
       query,
       { variables },
@@ -55,14 +52,13 @@ export default function getAllProductsOperation({
         }),
       }
     )
-    
+      
     return {
       products: data.products.edges.map(({ node }:any) =>
-       
-       normalizeProduct(node as ShopifyProduct)
+        node
       ),
     }
   }
 
-  return getAllProducts
+  return getAllCollections
 }

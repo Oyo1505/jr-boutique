@@ -109,6 +109,7 @@ export function normalizeProduct({
   metafields,
   ...rest
 }: ShopifyProduct): Product {
+  console.log(variants)
   return {
     id,
     name,

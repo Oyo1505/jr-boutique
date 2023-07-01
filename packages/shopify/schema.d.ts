@@ -7584,6 +7584,48 @@ export type GetProductBySlugQuery = {
 
 export type GetSiteInfoQueryVariables = Exact<{ [key: string]: never }>
 
+export type GetCustomCollectionByQuery = {
+  __typename?: 'QueryRoot'
+  custom_collections: {
+    __typename?: 'ProductConnection'
+    edges: Array<{
+      __typename?: 'ProductEdge'
+      node: {
+        __typename?: 'Product'
+        id: string
+        title: string
+        vendor: string
+        handle: string
+        priceRange: {
+          __typename?: 'ProductPriceRange'
+          minVariantPrice: {
+            __typename?: 'MoneyV2'
+            amount: any
+            currencyCode: CurrencyCode
+          }
+        }
+        images: {
+          __typename?: 'ImageConnection'
+          pageInfo: {
+            __typename?: 'PageInfo'
+            hasNextPage: boolean
+            hasPreviousPage: boolean
+          }
+          edges: Array<{
+            __typename?: 'ImageEdge'
+            node: {
+              __typename?: 'Image'
+              originalSrc: any
+              altText?: string | null
+              width?: number | null
+              height?: number | null
+            }
+          }>
+        }
+      }
+    }>
+  }
+}
 export type GetSiteInfoQuery = {
   __typename?: 'QueryRoot'
   shop: { __typename?: 'Shop'; name: string }

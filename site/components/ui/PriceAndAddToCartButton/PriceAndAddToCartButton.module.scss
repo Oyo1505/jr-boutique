@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  .value{
+    font-family: rubik-medium; 
+    font-size: $font-size-2;
+    text-align: center;
+    color: $red;
+    height: 40px;
+    padding: 10px;
+    background: $yellow;
+    min-width: 65px;
+  }
+}
