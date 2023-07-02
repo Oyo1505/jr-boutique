@@ -7158,6 +7158,22 @@ export type ProductConnectionFragment = {
             title: string
             sku?: string | null
             availableForSale: boolean
+            requiresShipping: boolean
+            selectedOptions: Array<{
+              __typename?: 'SelectedOption'
+              name: string
+              value: string
+            }>
+            priceV2: {
+              __typename?: 'MoneyV2'
+              amount: any
+              currencyCode: CurrencyCode
+            }
+            compareAtPriceV2?: {
+              __typename?: 'MoneyV2'
+              amount: any
+              currencyCode: CurrencyCode
+            } | null
           }
         }>
       }
@@ -7480,6 +7496,22 @@ export type GetProductsFromCollectionQuery = {
                     title: string
                     sku?: string | null
                     availableForSale: boolean
+                    requiresShipping: boolean
+                    selectedOptions: Array<{
+                      __typename?: 'SelectedOption'
+                      name: string
+                      value: string
+                    }>
+                    priceV2: {
+                      __typename?: 'MoneyV2'
+                      amount: any
+                      currencyCode: CurrencyCode
+                    }
+                    compareAtPriceV2?: {
+                      __typename?: 'MoneyV2'
+                      amount: any
+                      currencyCode: CurrencyCode
+                    } | null
                   }
                 }>
               }

@@ -16,13 +16,26 @@ export const productConnectionFragment = /* GraphQL */ `
             currencyCode
           }
         }
-        variants(first: 1) {
+        variants(first: 250) {
           edges {
             node {
               id
               title
               sku
               availableForSale
+              requiresShipping
+              selectedOptions {
+                name
+                value
+              }
+              priceV2 {
+                amount
+                currencyCode
+              }
+              compareAtPriceV2 {
+                amount
+                currencyCode
+              }
             }
           }
         }
