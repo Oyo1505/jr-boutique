@@ -7161,6 +7161,24 @@ export type ProductConnectionFragment = {
           }
         }>
       }
+      images: {
+        __typename?: 'ImageConnection'
+        pageInfo: {
+          __typename?: 'PageInfo'
+          hasNextPage: boolean
+          hasPreviousPage: boolean
+        }
+        edges: Array<{
+          __typename?: 'ImageEdge'
+          node: {
+            __typename?: 'Image'
+            url: any
+            altText?: string | null
+            width?: number | null
+            height?: number | null
+          }
+        }>
+      }
     }
   }>
 }
@@ -7207,6 +7225,24 @@ export type GetAllProductsQuery = {
               title: string
               sku?: string | null
               availableForSale: boolean
+            }
+          }>
+        }
+        images: {
+          __typename?: 'ImageConnection'
+          pageInfo: {
+            __typename?: 'PageInfo'
+            hasNextPage: boolean
+            hasPreviousPage: boolean
+          }
+          edges: Array<{
+            __typename?: 'ImageEdge'
+            node: {
+              __typename?: 'Image'
+              url: any
+              altText?: string | null
+              width?: number | null
+              height?: number | null
             }
           }>
         }
@@ -7444,6 +7480,24 @@ export type GetProductsFromCollectionQuery = {
                     title: string
                     sku?: string | null
                     availableForSale: boolean
+                  }
+                }>
+              }
+              images: {
+                __typename?: 'ImageConnection'
+                pageInfo: {
+                  __typename?: 'PageInfo'
+                  hasNextPage: boolean
+                  hasPreviousPage: boolean
+                }
+                edges: Array<{
+                  __typename?: 'ImageEdge'
+                  node: {
+                    __typename?: 'Image'
+                    url: any
+                    altText?: string | null
+                    width?: number | null
+                    height?: number | null
                   }
                 }>
               }

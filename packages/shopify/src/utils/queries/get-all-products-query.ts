@@ -58,7 +58,48 @@ const getAllProductsQuery = /* GraphQL */ `
       reverse: $reverse
       query: $query
     ) {
-      ...productConnection
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          title
+          vendor
+          handle
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                sku
+                availableForSale
+              }
+            }
+          }
+          images(first: 1) {
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+            }
+            edges {
+              node {
+                url
+                altText
+                width
+                height
+              }
+            }
+          }
+        }
+      }
     }
   }
 
